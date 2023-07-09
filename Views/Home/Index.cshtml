@@ -1,0 +1,59 @@
+﻿@model List<ActionMethodInfo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="form-group" style="margin:4px">
+    <label>輸入</label>
+    <input type="text" id="myinput" >
+    <button id="SendButton" class="btn btn-primary">SendToGoogle</button>
+    <button id="OpenFolderButton" class="btn btn-primary">OpenFolder</button>
+</div>
+
+
+<h2>Action Methods</h2>
+
+<ul>
+    @foreach (var method in Model)
+    {
+        <li><a href="@method.Url">@method.Name</a></li>
+    }
+</ul>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<script>
+    function setSendButton() {
+        var Button = document.getElementById('SendButton');
+        Button.addEventListener('click', function () {
+            var parameter = 'Home/TypeToGoogle';
+            ajax_post(parameter)
+        });
+
+        var btn_OpenFolder = document.getElementById('OpenFolderButton');
+        btn_OpenFolder.addEventListener('click', function () {
+            var parameter = 'Home/OpenFolder';
+            ajax_post(parameter)
+        });
+    };
+    setSendButton();
+    function ajax_post(url) {
+        var myinput = document.getElementById("myinput");
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: { myinput: myinput.value },
+            success: function (data) {
+                global_data = data;
+
+                //// 篩選出重量小於等於輸入重量的資料項目
+                //var filteredData = global_data.filter(function (item) {
+                //    return item.重量 <= selectedWeightLimit;
+                //});
+            }
+        });
+    };
+</script>

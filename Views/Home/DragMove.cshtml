@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>拖拽示例</title>
+    <style>
+        .draggable {
+            cursor: move;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            margin-bottom: 5px;
+        }
+
+        .drag-over {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d1">
+            <input type="text" value="sdasda" id="AA1" />
+        </div>
+        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d2">
+            <input type="text" value="45454" id="AA2" />
+        </div>
+        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d3">
+            <input type="text" value="aaa" id="AA3" />
+        </div>
+        <!-- 其他列... -->
+    </div>
+
+    <script>
+        var dragSrcElement = null;
+        var dragOverElement = null;
+
+        function handleDragStart(e) {
+            dragSrcElement = e.currentTarget;
+            e.dataTransfer.effectAllowed = 'move';
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+        }
+
+        function handleDragEnter(e) {
+            if (e.target.classList.contains('draggable')) {
+                dragOverElement = e.target;
+                e.target.classList.add('drag-over');
+                if (dragSrcElement !== dragOverElement) {
+                    var srcInput = dragSrcElement.querySelector('input');
+                    var overInput = dragOverElement.querySelector('input');
+                    var tempValue = srcInput.value;
+                    srcInput.value = overInput.value;
+                    overInput.value = tempValue;
+                    dragSrcElement = dragOverElement; // 更新 dragSrcElement 當前拖動目標
+                }
+            }
+        }
+
+        function handleDragLeave(e) {
+            if (e.target.classList.contains('draggable')) {
+                e.target.classList.remove('drag-over');
+            }
+        }
+
+        var container = document.getElementById('container');
+        container.addEventListener('dragstart', handleDragStart, false);
+
+        container.addEventListener('dragenter', handleDragEnter, false);
+        container.addEventListener('dragleave', handleDragLeave, false);
+
+        container.addEventListener('dragend', function (e) {
+            if (dragOverElement) {
+                dragOverElement.classList.remove('drag-over');
+            }
+            dragSrcElement = null;
+            dragOverElement = null;
+        });
+    </script>
+</body>
+
+</html>
