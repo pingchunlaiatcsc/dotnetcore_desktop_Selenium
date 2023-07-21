@@ -5,91 +5,92 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using dotnetcore_desktop_app.Data;
 using dotnetcore_desktop_app.Models;
 
 namespace dotnetcore_desktop_app.Controllers
 {
-    public class TCustomersController : Controller
+    public class RpgCharatersController : Controller
     {
-        private readonly DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext _context;
+        private readonly DataContext _context;
 
-        public TCustomersController(DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext context)
+        public RpgCharatersController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: TCustomers
+        // GET: RpgCharaters
         public async Task<IActionResult> Index()
         {
-              return _context.TCustomers != null ? 
-                          View(await _context.TCustomers.ToListAsync()) :
-                          Problem("Entity set 'DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext.TCustomers'  is null.");
+              return _context.RpgCharaters != null ? 
+                          View(await _context.RpgCharaters.ToListAsync()) :
+                          Problem("Entity set 'DataContext.RpgCharaters'  is null.");
         }
-        
-        // GET: TCustomers/Details/5
+
+        // GET: RpgCharaters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.TCustomers == null)
+            if (id == null || _context.RpgCharaters == null)
             {
                 return NotFound();
             }
 
-            var tCustomer = await _context.TCustomers
-                .FirstOrDefaultAsync(m => m.FId == id);
-            if (tCustomer == null)
+            var rpgCharater = await _context.RpgCharaters
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (rpgCharater == null)
             {
                 return NotFound();
             }
 
-            return View(tCustomer);
+            return View(rpgCharater);
         }
 
-        // GET: TCustomers/Create
+        // GET: RpgCharaters/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TCustomers/Create
+        // POST: RpgCharaters/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FId,FName,FPhone,FEmail,FAddress")] TCustomer tCustomer)
+        public async Task<IActionResult> Create([Bind("id,name,Rpgclass,HitPoints")] RpgCharater rpgCharater)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tCustomer);
+                _context.Add(rpgCharater);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(tCustomer);
+            return View(rpgCharater);
         }
 
-        // GET: TCustomers/Edit/5
+        // GET: RpgCharaters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.TCustomers == null)
+            if (id == null || _context.RpgCharaters == null)
             {
                 return NotFound();
             }
 
-            var tCustomer = await _context.TCustomers.FindAsync(id);
-            if (tCustomer == null)
+            var rpgCharater = await _context.RpgCharaters.FindAsync(id);
+            if (rpgCharater == null)
             {
                 return NotFound();
             }
-            return View(tCustomer);
+            return View(rpgCharater);
         }
 
-        // POST: TCustomers/Edit/5
+        // POST: RpgCharaters/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FId,FName,FPhone,FEmail,FAddress")] TCustomer tCustomer)
+        public async Task<IActionResult> Edit(int id, [Bind("id,name,Rpgclass,HitPoints")] RpgCharater rpgCharater)
         {
-            if (id != tCustomer.FId)
+            if (id != rpgCharater.id)
             {
                 return NotFound();
             }
@@ -98,12 +99,12 @@ namespace dotnetcore_desktop_app.Controllers
             {
                 try
                 {
-                    _context.Update(tCustomer);
+                    _context.Update(rpgCharater);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TCustomerExists(tCustomer.FId))
+                    if (!RpgCharaterExists(rpgCharater.id))
                     {
                         return NotFound();
                     }
@@ -114,49 +115,49 @@ namespace dotnetcore_desktop_app.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(tCustomer);
+            return View(rpgCharater);
         }
 
-        // GET: TCustomers/Delete/5
+        // GET: RpgCharaters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.TCustomers == null)
+            if (id == null || _context.RpgCharaters == null)
             {
                 return NotFound();
             }
 
-            var tCustomer = await _context.TCustomers
-                .FirstOrDefaultAsync(m => m.FId == id);
-            if (tCustomer == null)
+            var rpgCharater = await _context.RpgCharaters
+                .FirstOrDefaultAsync(m => m.id == id);
+            if (rpgCharater == null)
             {
                 return NotFound();
             }
 
-            return View(tCustomer);
+            return View(rpgCharater);
         }
 
-        // POST: TCustomers/Delete/5
+        // POST: RpgCharaters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.TCustomers == null)
+            if (_context.RpgCharaters == null)
             {
-                return Problem("Entity set 'DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext.TCustomers'  is null.");
+                return Problem("Entity set 'DataContext.RpgCharaters'  is null.");
             }
-            var tCustomer = await _context.TCustomers.FindAsync(id);
-            if (tCustomer != null)
+            var rpgCharater = await _context.RpgCharaters.FindAsync(id);
+            if (rpgCharater != null)
             {
-                _context.TCustomers.Remove(tCustomer);
+                _context.RpgCharaters.Remove(rpgCharater);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TCustomerExists(int id)
+        private bool RpgCharaterExists(int id)
         {
-          return (_context.TCustomers?.Any(e => e.FId == id)).GetValueOrDefault();
+          return (_context.RpgCharaters?.Any(e => e.id == id)).GetValueOrDefault();
         }
     }
 }
