@@ -13,7 +13,6 @@ builder.Services.AddControllersWithViews();
 //    builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<DataContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
 var app = builder.Build();
 var url = "http://127.0.0.1:5000";
 

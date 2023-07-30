@@ -2,14 +2,32 @@
 <html>
 
 <head>
-    <title>拖拽示例</title>
+    <title>工廠日誌介面</title>
     <style>
+        .column {
+            display: inline-block;
+            vertical-align: top; /* 將div元素內容的頂部對齊 */
+        }
+
         .draggable {
             cursor: move;
             padding: 10px;
             border: 1px solid #ccc;
             background-color: #f9f9f9;
             margin-bottom: 5px;
+        }
+
+            .draggable input {
+                width: 100%;
+                /* 可以加入其他的CSS樣式 */
+            }
+
+        .odd {
+            width: 80px;
+        }
+
+        .even {
+            width: 600px;
         }
 
         .drag-over {
@@ -19,18 +37,176 @@
 </head>
 
 <body>
-    <div id="container">
-        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d1">
-            <input type="text" value="sdasda" id="AA1" />
-        </div>
-        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d2">
-            <input type="text" value="45454" id="AA2" />
-        </div>
-        <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d3">
-            <input type="text" value="aaa" id="AA3" />
-        </div>
-        <!-- 其他列... -->
+    @*    //測試用
+    <div id="container_1">
+    <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d1">
+    <input type="text" value="sdasda" id="AAA" />
     </div>
+    <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d2">
+    <input type="text" value="45454" id="AAB" />
+    </div>
+    <div class="draggable" draggable="true" ondragstart="handleDragStart(event)" id="d3">
+    <input type="text" value="aaa" id="AAC" />
+    </div>
+    <!-- 其他列... -->
+    </div>*@
+    <div id="app">
+        <form v-on:submit.prevent="LogWorkshop_Read">
+            <label>職工編號</label>
+            <input type="search" id="userId" v-model="userId" required>
+
+            <label>密碼</label>
+            <input type="password" id="password" v-model="userPassword" required>
+
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+
+        <div id="container">
+            <div>
+                <div class="column">
+                    <input type="search" v-model="model_setting.TextBox14" style="width:70px" placeholder="民國年" />
+                    <label>年</label>
+                </div>
+                <div class="column">
+                    <input type="search" v-model="model_setting.TextBox1" style="width:40px" placeholder="月" />
+                    <label>月</label>
+                </div>
+                <div class="column">
+                    <input type="search" v-model="model_setting.DropDownList11" style="width:40px" placeholder="日" />
+                    <label>日</label>
+                </div>
+                <div class="column">
+                    <div class="form-group" style="margin:4px">
+                        <label>天氣</label>
+                        <div class="btn-group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_sunnyday" autocomplete="off" checked value="0">
+                            <label class="btn btn-outline-primary" for="btnradio_sunnyday">🌞晴</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_cloudy" autocomplete="off" value="1">
+                            <label class="btn btn-outline-primary" for="btnradio_cloudy">☁️多雲</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_cloudyday" autocomplete="off" value="2">
+                            <label class="btn btn-outline-primary" for="btnradio_cloudyday">🌤陰天</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_showers" autocomplete="off" value="3">
+                            <label class="btn btn-outline-primary" for="btnradio_showers">🌧驟雨</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_heavyrain" autocomplete="off" value="4">
+                            <label class="btn btn-outline-primary" for="btnradio_heavyrain">⛈️豪大雨</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList3" id="btnradio_typhoon" autocomplete="off" value="5">
+                            <label class="btn btn-outline-primary" for="btnradio_typhoon">🌀颱風</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="column">
+                    <div class="form-group" style="margin:4px">
+                        <label>單位</label>
+                        <div class="btn-group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C341" autocomplete="off" checked value="41">
+                            <label class="btn btn-outline-primary" for="btnradio_C341">C341</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C342" autocomplete="off" value="42">
+                            <label class="btn btn-outline-primary" for="btnradio_C342">C342</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C345" autocomplete="off" value="45">
+                            <label class="btn btn-outline-primary" for="btnradio_C345">C345</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C346" autocomplete="off" value="46">
+                            <label class="btn btn-outline-primary" for="btnradio_C346">C346</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C348" autocomplete="off" value="48">
+                            <label class="btn btn-outline-primary" for="btnradio_C348">C348</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList2" id="btnradio_C349" autocomplete="off" value="49">
+                            <label class="btn btn-outline-primary" for="btnradio_C349">C349</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="column">
+                    <div class="form-group" style="margin:4px">
+                        <label>班別</label>
+                        <div class="btn-group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList4" id="btnradio_turn0" autocomplete="off" checked value="0">
+                            <label class="btn btn-outline-primary" for="btnradio_turn0">夜</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList4" id="btnradio_turn1" autocomplete="off" value="1">
+                            <label class="btn btn-outline-primary" for="btnradio_turn1">早</label>
+                            <input type="radio" class="btn-check btnradio" v-model="model_setting.DropDownList4" id="btnradio_turn2" autocomplete="off" value="2">
+                            <label class="btn btn-outline-primary" for="btnradio_turn2">中</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="column">
+                    <label>自</label>
+                    <input type="search" v-model="model_setting.TextBox3" style="width:60px" placeholder="開始" />
+                    <label>至</label>
+                    <input type="search" v-model="model_setting.TextBox4" style="width:60px" placeholder="結束" />
+                    <label>值班負責人</label>
+                    <input type="search" v-model="model_setting.DropDownList5" style="width:60px" placeholder="0,1,2,3" />
+                    <label style="color:gray">說明:使用原本工廠日誌時，股長的排位順序</label>
+                </div>
+            </div>
+            <div>
+                <div class="column">
+                    <label>自</label>
+                    <input type="search" v-model="model_setting.TextBox5" style="width:60px" placeholder="開始" />
+                    <label>至</label>
+                    <input type="search" v-model="model_setting.TextBox6" style="width:60px" placeholder="結束" />
+                    <label>代班負責人</label>
+                    <input type="search" v-model="model_setting.DropDownList7" style="width:60px" placeholder="0,1,2,3" />
+                </div>
+            </div>
+            <div>
+                <div class="column">
+                    <label>出勤紀錄：</label>
+                    <label>應到</label>
+                    <input type="search" v-model="model_setting.TextBox7" style="width:60px" />
+                    <label>實到</label>
+                    <input type="search" v-model="model_setting.TextBox8" style="width:60px" />
+                    <label>休假</label>
+                    <input type="search" v-model="model_setting.TextBox9" style="width:60px" />
+                    <label>病假</label>
+                    <input type="search" v-model="model_setting.TextBox10" style="width:60px" />
+                    <label>其他</label>
+                    <input type="search" v-model="model_setting.TextBox11" style="width:60px" />
+                </div>
+            </div>
+            <br />
+            <div class=column>
+                <div class=column>
+
+                    <div><label>時間</label></div>
+                    <div v-for="(value, key) in model_time" class="draggable odd" draggable="true" ondragstart="handleDragStart(event)" :key="key">
+                        @*<label for="key">{{ [key] }}</label>*@
+                        <input type="search" :id="key" v-model="model_time[key]" />
+                    </div>
+                </div>
+                <div class=column>
+                    <div>
+                        <label>記事內容</label>
+                    </div>
+                    <div v-for="(value, key) in model_content" class="draggable even" draggable="true" ondragstart="handleDragStart(event)" :key="key">
+                        @*<label for="key">{{ [key] }}</label>*@
+                        <input type="search" :id="key" v-model="model_content[key]" />
+                    </div>
+                </div>
+            </div>
+            <div class=column>
+                <div>
+                    <label>特別記載</label>
+                    <div v-for="(value, key) in model_special" class="draggable even" draggable="true" ondragstart="handleDragStart(event)" :key="key">
+                        @*<label for="key">{{ [key] }}</label>*@
+                        <input type="search" :id="key" v-model="model_special[key]" />
+                    </div>
+                </div>
+                <div>
+                    <label>交接事項</label>
+                    <div v-for="(value, key) in model_handover" class="draggable even" draggable="true" ondragstart="handleDragStart(event)" :key="key">
+                        @*<label for="key">{{ [key] }}</label>*@
+                        <input type="search" :id="key" v-model="model_handover[key]" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" @@click="LogWorkshop_Write">寫入</button>
+    </div>
+
 
     <script>
         var dragSrcElement = null;
@@ -78,7 +254,375 @@
             dragSrcElement = null;
             dragOverElement = null;
         });
+
+        ////測試用
+        //var container = document.getElementById('container_1');
+        //container.addEventListener('dragstart', handleDragStart, false);
+
+        //container.addEventListener('dragenter', handleDragEnter, false);
+        //container.addEventListener('dragleave', handleDragLeave, false);
+
+        //container.addEventListener('dragend', function (e) {
+        //    if (dragOverElement) {
+        //        dragOverElement.classList.remove('drag-over');
+        //    }
+        //    dragSrcElement = null;
+        //    dragOverElement = null;
+        //});
+    </script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    userId: '',
+                    userPassword: '',
+                    model_time: {
+                        AA1: '',
+                        AA3: '',
+                        AA5: '',
+                        AA7: '',
+                        AA9: '',
+                        AA11: '',
+                        AA13: '',
+                        AA15: '',
+                        AA17: '',
+                        AA19: '',
+                        AA21: '',
+                        AA23: '',
+                        AA25: '',
+                        AA27: '',
+                        AA29: '',
+                        AA31: '',
+                        AA33: '',
+                        AA35: '',
+                        AA37: '',
+                        AA39: '',
+                        AA41: '',
+                        AA43: '',
+                        AA45: '',
+                        AA47: '',
+                        AA49: '',
+                        AA51: '',
+                        AA53: '',
+                        AA55: '',
+                        AA57: '',
+                        AA59: '',
+                    },
+                    model_content: {
+                        AA2: '',
+                        AA4: '',
+                        AA6: '',
+                        AA8: '',
+                        AA10: '',
+                        AA12: '',
+                        AA14: '',
+                        AA16: '',
+                        AA18: '',
+                        AA20: '',
+                        AA22: '',
+                        AA24: '',
+                        AA26: '',
+                        AA28: '',
+                        AA30: '',
+                        AA32: '',
+                        AA34: '',
+                        AA36: '',
+                        AA38: '',
+                        AA40: '',
+                        AA42: '',
+                        AA44: '',
+                        AA46: '',
+                        AA48: '',
+                        AA50: '',
+                        AA52: '',
+                        AA54: '',
+                        AA56: '',
+                        AA58: '',
+                        AA60: '',
+                    },
+                    model_special: {
+                        AB1: '',
+                        AB2: '',
+                        AB3: '',
+                        AB4: '',
+                        AB5: '',
+                        AB6: '',
+                    },
+                    model_handover: {
+                        AC1: '',
+                        AC2: '',
+                        AC3: '',
+                        AC4: '',
+                        AC5: '',
+                        AC6: '',
+                    },
+                    model_setting: {
+                        TextBox14: '',//民國年
+                        TextBox1: '',//月(不補0)
+                        DropDownList11: '',//日(不補0)
+                        DropDownList3: '',//天氣，例如晴、多雲、陰、驟雨、豪大雨、颱風
+                        UserLog: '',
+                        DropDownList2: '',//單位，例如41、42、45、46、48、49
+                        DropDownList4: '',//班別，值為夜、早、中、刪除
+                        TextBox3: '',//值班開始時間
+                        TextBox4: '',//值班結束時間
+                        DropDownList5: '',//值班人員，值為0、1、2、3
+                        TextBox5: '',//值班開始時間
+                        TextBox6: '',//值班結束時間
+                        DropDownList6: '',//值班人員，值為0、1、2、3
+                        TextBox7: '',//應到
+                        TextBox8: '',//實到
+                        TextBox9: '',//休假
+                        TextBox10: '',//病假
+                        TextBox11: '',//其他
+                    },
+                    model: {
+                        __VIEWSTATE: '',
+                        __VIEWSTATEGENERATOR: '',
+                        __EVENTVALIDATION: '',
+                        TextBox14: '',
+                        TextBox1: '',
+                        DropDownList11: '',
+                        DropDownList3: '',
+                        UserLog: '',
+                        DropDownList2: '',
+                        DropDownList4: '',
+                        TextBox3: '',
+                        TextBox4: '',
+                        DropDownList5: '',
+                        TextBox5: '',
+                        TextBox6: '',
+                        DropDownList6: '',
+                        TextBox7: '',
+                        TextBox8: '',
+                        TextBox9: '',
+                        TextBox10: '',
+                        TextBox11: '',
+                        TextBox18: '',
+                        AA1: '',
+                        AA2: '',
+                        AA3: '',
+                        AA4: '',
+                        AA5: '',
+                        AA6: '',
+                        AA7: '',
+                        AA8: '',
+                        AA9: '',
+                        AA10: '',
+                        AA11: '',
+                        AA12: '',
+                        AA13: '',
+                        AA14: '',
+                        AA15: '',
+                        AA16: '',
+                        AA17: '',
+                        AA18: '',
+                        AA19: '',
+                        AA20: '',
+                        AA21: '',
+                        AA22: '',
+                        AA23: '',
+                        AA24: '',
+                        AA25: '',
+                        AA26: '',
+                        AA27: '',
+                        AA28: '',
+                        AA29: '',
+                        AA30: '',
+                        AA31: '',
+                        AA32: '',
+                        AA33: '',
+                        AA34: '',
+                        AA35: '',
+                        AA36: '',
+                        AA37: '',
+                        AA38: '',
+                        AA39: '',
+                        AA40: '',
+                        AA41: '',
+                        AA42: '',
+                        AA43: '',
+                        AA44: '',
+                        AA45: '',
+                        AA46: '',
+                        AA47: '',
+                        AA48: '',
+                        AA49: '',
+                        AA50: '',
+                        AA51: '',
+                        AA52: '',
+                        AA53: '',
+                        AA54: '',
+                        AA55: '',
+                        AA56: '',
+                        AA57: '',
+                        AA58: '',
+                        AA59: '',
+                        AA60: '',
+                        AB1: '',
+                        AB2: '',
+                        AB3: '',
+                        AB4: '',
+                        AB5: '',
+                        AB6: '',
+                        AC1: '',
+                        AC2: '',
+                        AC3: '',
+                        AC4: '',
+                        AC5: '',
+                        AC6: '',
+                        FileUpload1: '',
+                        WriteXml: '',
+                        DropDownList7: ''
+                    }
+                };
+            },
+            updated() {
+                // 在组件重新激活时重新初始化排序功能
+            },
+            methods: {
+                LogWorkshop_Read() {
+                    var data = {
+                        userId: this.userId,
+                        userPassword: this.userPassword,
+                    };
+                    // 使用 AJAX 發送POST
+                    $.ajax({
+                        url: 'PostToLogWorkshop',
+                        type: 'POST',
+                        //data: { userId: this.userId, userPassword: this.userPassword },
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: (responseData) => {
+                            console.log(responseData);
+                            //this.pkl_1 = uniqueArray.slice(0, 24);
+                            //this.pkl_1_code_count = this.count_Code(this.pkl_1);
+                            //prun_pkl1_data = this.pkl_1;
+                            console.log('PKL_1 data updated successfully');
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Error updating pkl_1 data:', error);
+                        }
+                    });
+                    //拆開model
+                    for (const key in this.model) {
+                        if (key.startsWith("AA")) {
+                            // Check if key starts with "AA", indicating it belongs to model_time or model_content
+                            const index = parseInt(key.substring(2)); // Extract the numeric part of the key (e.g., AA1 -> 1, AA2 -> 2)
+                            if (index % 2 === 1) {
+                                this.model_time[key] = this.model[key]; // Odd-indexed properties go to model_time
+                            } else {
+                                this.model_content[key] = this.model[key]; // Even-indexed properties go to model_content
+                            }
+                        } else if (key.startsWith("AB")) {
+                            this.model_special[key] = this.model[key]; // Properties starting with "AB" go to model_special
+                        } else if (key.startsWith("AC")) {
+                            this.model_handover[key] = this.model[key]; // Properties starting with "AC" go to model_handover
+                        } else {
+                            // All other properties (except the ones related to ViewState, ViewStateGenerator, and EventValidation) go to model_setting
+                            if (key !== "myViewState" && key !== "myViewStateGenerator" && key !== "myEventValidation") {
+                                this.model_setting[key] = this.model[key];
+                            }
+                        }
+                    }
+                };
+                LogWorkshop_Write() {
+                    //合併model
+                    for (const key in this.model_time) {
+                        this.model[key] = this.model_time[key];
+                    };
+                    for (const key in this.model_content) {
+                        this.model[key] = this.model_content[key];
+                    };
+                    for (const key in this.model_special) {
+                        this.model[key] = this.model_special[key];
+                    };
+                    for (const key in this.model_handover) {
+                        this.model[key] = this.model_handover[key];
+                    };
+                    for (const key in this.model_setting) {
+                        this.model[key] = this.model_setting[key];
+                    };
+
+                    var data = {
+                        userId: this.userId,
+                        userPassword: this.userPassword,
+                        model: this.model
+                    };
+                    // 使用 AJAX 發送POST
+                    $.ajax({
+                        url: 'PostToLogWorkshop',
+                        type: 'POST',
+                        //data: { userId: this.userId, userPassword: this.userPassword },
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: (responseData) => {
+                            console.log(responseData);
+                            //this.pkl_1 = uniqueArray.slice(0, 24);
+                            //this.pkl_1_code_count = this.count_Code(this.pkl_1);
+                            //prun_pkl1_data = this.pkl_1;
+                            console.log('PKL_1 data updated successfully');
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Error updating pkl_1 data:', error);
+                        }
+                    });
+                }
+            },
+            created() {
+                //this.update_PKL_1_Data();
+                //// 在 Vue 实例被创建后，每隔一段时间调用 update_PKL_1_Data,update_PKL_2_Data 函数
+                //setInterval(() => {
+                //    this.update_PKL_1_Data();
+                //}, 60000); // 每 60 秒执行一次，可以根据需求调整时间间隔
+            },
+            mounted() {
+                //// Bind the ondragstart event after the Vue instance has been mounted
+                //var draggableElements = document.querySelectorAll('.draggable');
+                //draggableElements.forEach((element) => {
+                //    element.addEventListener('dragstart', (event) => {
+                //        var key = event.target.querySelector('input').id;
+                //        this.handleDragStart(event, key);
+                //    });
+                //});
+
+                var container = document.getElementById('container');
+
+                container.addEventListener('dragenter', (event) => {
+                    if (event.target.classList.contains('draggable')) {
+                        dragOverElement = event.target;
+                        event.target.classList.add('drag-over');
+                        if (dragSrcElement !== dragOverElement) {
+                            var srcInput = dragSrcElement.querySelector('input');
+                            var overInput = dragOverElement.querySelector('input');
+                            var tempValue = srcInput.value;
+                            srcInput.value = overInput.value;
+                            overInput.value = tempValue;
+                            dragSrcElement = dragOverElement;
+                        }
+                    }
+                }, false);
+
+                container.addEventListener('dragleave', (event) => {
+                    if (event.target.classList.contains('draggable')) {
+                        event.target.classList.remove('drag-over');
+                    }
+                }, false);
+
+                container.addEventListener('dragend', (event) => {
+                    if (dragOverElement) {
+                        dragOverElement.classList.remove('drag-over');
+                    }
+                    dragSrcElement = null;
+                    dragOverElement = null;
+                });
+            }
+
+        });
     </script>
 </body>
 
 </html>
+

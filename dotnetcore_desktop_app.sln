@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnetcore_desktop_app", "dotnetcore_desktop_app.csproj", "{DF217398-0032-41F0-85B3-8E1C02CBED93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EIPLibrary", "..\EIPLibrary\EIPLibrary.csproj", "{7891DBE7-6AF0-47B4-A61A-8E2EC47D01B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DF217398-0032-41F0-85B3-8E1C02CBED93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF217398-0032-41F0-85B3-8E1C02CBED93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF217398-0032-41F0-85B3-8E1C02CBED93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7891DBE7-6AF0-47B4-A61A-8E2EC47D01B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7891DBE7-6AF0-47B4-A61A-8E2EC47D01B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7891DBE7-6AF0-47B4-A61A-8E2EC47D01B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7891DBE7-6AF0-47B4-A61A-8E2EC47D01B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

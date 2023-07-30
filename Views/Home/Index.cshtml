@@ -10,7 +10,17 @@
     <button id="OpenFolderButton" class="btn btn-primary">OpenFolder</button>
 </div>
 
+<div id="app">
+    <form v-on:submit.prevent="EIP_Login">
+        <label>職工編號</label>
+        <input type="text" id="userId" v-model="userId" required>
 
+        <label>密碼</label>
+        <input type="password" id="password" v-model="userPassword" required>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 <h2>Action Methods</h2>
 
 <ul>
@@ -56,4 +66,47 @@
             }
         });
     };
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                userId: '', 
+                userPassword: ''
+            };
+        },
+        updated() {
+            // 在组件重新激活时重新初始化排序功能
+        },
+        methods: {
+            EIP_Login() {
+                // 使用 AJAX 登入EIP
+                $.ajax({
+                    url: 'Home/EIP_API',
+                    type: 'POST',
+                    data: { userId: this.userId, userPassword: this.userPassword},
+                    //contentType: 'application/json',
+                    success: (responseData) => {
+                            console.log(responseData);                        
+                        //this.pkl_1 = uniqueArray.slice(0, 24);
+                        //this.pkl_1_code_count = this.count_Code(this.pkl_1);
+                        //prun_pkl1_data = this.pkl_1;
+                        console.log('PKL_1 data updated successfully');
+                    },
+                    error: (xhr, status, error) => {
+                        console.error('Error updating pkl_1 data:', error);
+                    }
+                });
+            }
+        },
+        created() {
+            //this.update_PKL_1_Data();
+            //// 在 Vue 实例被创建后，每隔一段时间调用 update_PKL_1_Data,update_PKL_2_Data 函数
+            //setInterval(() => {
+            //    this.update_PKL_1_Data();
+            //}, 60000); // 每 60 秒执行一次，可以根据需求调整时间间隔
+        }
+
+    });
 </script>
