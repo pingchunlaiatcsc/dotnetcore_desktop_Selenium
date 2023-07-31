@@ -10,7 +10,8 @@ using EIPLibrary.WebCrawler;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices;
-
+using Newtonsoft.Json;
+using System.IO;
 
 namespace dotnetcore_desktop_app.Controllers
 {
@@ -74,8 +75,42 @@ namespace dotnetcore_desktop_app.Controllers
         {
             return View();
         }
+        public JsonResult ReadFromLocal()
+        {            
+            string filePath = "SaveFile/save_1.json";
+            string jsonContent = System.IO.File.ReadAllText(filePath);
+
+            // 将 JSON 字符串转换为 C# 对象（根据之前的数据模型定义 YourDataModel 进行定义）
+            LogWorkshopViewModel viewModel = JsonConvert.DeserializeObject<LogWorkshopViewModel>(jsonContent);
+            return Json(viewModel);
+        }
         [HttpPost]
-        public JsonResult PostToLogWorkshop([FromBody] LogWorkshopViewModel modelData)
+        public JsonResult ReadFromLogWorkshop([FromBody] LogWorkshopViewModel modelData)
+        {
+            eip = new EIP(modelData.userId, modelData.userPassword);
+            eip.Login();
+            LogWorkshop logWorkshop = new LogWorkshop(eip, modelData.model);
+            logWorkshop.Read();
+            // 將資料填入ViewModel
+            LogWorkshopViewModel viewModel = new LogWorkshopViewModel
+            {
+                userId = modelData.userId,
+                userPassword = modelData.userPassword,
+                model = logWorkshop.PostData,
+                DutyOfficers = logWorkshop.dutyOfficer
+            };
+            // 将ViewModel转换为JSON字符串
+            string json = JsonConvert.SerializeObject(viewModel, Formatting.Indented);
+
+            // 将JSON字符串保存到文件
+            string filePath = "SaveFile/save_1.json";
+            System.IO.File.WriteAllText(filePath, json);
+
+            return Json(viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult WriteToLogWorkshop([FromBody] LogWorkshopViewModel modelData)
         {
             eip = new EIP(modelData.userId, modelData.userPassword);
             eip.Login();
@@ -83,7 +118,7 @@ namespace dotnetcore_desktop_app.Controllers
             logWorkshop.Write();
 
             ShellExecute(IntPtr.Zero, "open", logWorkshop.RedirectUrl, "", "", 1);
-            return Json("PostToLogWorkshop done");
+            return Json("WriteToLogWorkshop done");
         }
         [HttpPost]
         public JsonResult OpenFolder(string myinput)

@@ -3,6 +3,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using dotnetcore_desktop_app.Models;
 using dotnetcore_desktop_app.Data;
+using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,12 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext>(options => options.UseSqlServer(
 //    builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<DataContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Fix return Json() capitalization problem
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 
 var app = builder.Build();
 var url = "http://127.0.0.1:5000";
@@ -24,6 +32,9 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
