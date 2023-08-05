@@ -110,6 +110,29 @@ namespace dotnetcore_desktop_app.Controllers
         }
 
         [HttpPost]
+        public JsonResult ReadFromKW96([FromBody] KW96ViewModel modelData)
+        {
+            eip = new EIP(modelData.userId, modelData.userPassword);
+            eip.Login();
+            KW96 logWorkshop = new KW96(eip, modelData.model);
+            logWorkshop.Read();
+            // 將資料填入ViewModel
+            KW96ViewModel viewModel = new KW96ViewModel
+            {
+                userId = modelData.userId,
+                userPassword = modelData.userPassword,
+            };
+            // 将ViewModel转换为JSON字符串
+            string json = JsonConvert.SerializeObject(viewModel, Formatting.Indented);
+
+            // 将JSON字符串保存到文件
+            string filePath = "SaveFile/save_kw96.json";
+            System.IO.File.WriteAllText(filePath, json);
+
+            return Json(viewModel);
+        }
+
+        [HttpPost]
         public JsonResult WriteToLogWorkshop([FromBody] LogWorkshopViewModel modelData)
         {
             eip = new EIP(modelData.userId, modelData.userPassword);
@@ -117,15 +140,23 @@ namespace dotnetcore_desktop_app.Controllers
             LogWorkshop logWorkshop = new LogWorkshop(eip, modelData.model);
             logWorkshop.Write();
 
+            LogWorkshopViewModel viewModel = new LogWorkshopViewModel
+            {
+                userId = modelData.userId,
+                userPassword = modelData.userPassword,
+                model = logWorkshop.PostData,
+                DutyOfficers = logWorkshop.dutyOfficer
+            };
+            // 将ViewModel转换为JSON字符串
+            string json = JsonConvert.SerializeObject(viewModel, Formatting.Indented);
+
+            // 将JSON字符串保存到文件
+            string filePath = "SaveFile/save_1.json";
+            System.IO.File.WriteAllText(filePath, json);
             ShellExecute(IntPtr.Zero, "open", logWorkshop.RedirectUrl, "", "", 1);
             return Json("WriteToLogWorkshop done");
         }
-        [HttpPost]
-        public JsonResult OpenFolder(string myinput)
-        {
-            System.Diagnostics.Process.Start("explorer", myinput);
-            return Json("OpenFolder done");
-        }
+
         public IActionResult Privacy()
         {
             return View();

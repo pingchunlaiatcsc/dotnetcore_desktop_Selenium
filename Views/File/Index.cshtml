@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <div id="app">
+        <div class="form-group" style="margin:4px">
+            <label>輸入欲遍歷路徑</label>
+            <input type="text" id="myinput" v-model="TargetPath">
+            <button id="OpenFolderButton" class="btn btn-primary" @@click="TraverseDirectory">搜尋</button>
+        </div>
+        <div>
+            <label>共計找到{{Count}}個項目</label>
+        </div>
+        <div v-for="(path, index) in ResultPaths" :key="index">
+            <a :href="path" @@click.prevent="OpenFile(path)">{{ path }}</a>
+            <a @@click.prevent="OpenFile(getFolderFromPath(path))">📁</a>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    TargetPath: '',
+                    Count: 0,
+                    ResultPaths: {},
+                };
+            },
+            methods: {
+                TraverseDirectory() {
+                    var data = {
+                        TargetPath: this.TargetPath,
+                    };
+                    $.ajax({
+                        url: 'File/TraverseDirectory',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: (responseData) => {
+                            console.log(responseData);
+                            this.TargetPath = responseData.TargetPath;
+                            this.ResultPaths = responseData.ResultPaths;
+                            this.Count = responseData.Count;
+                            console.log('TraverseDirectory successfully');
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Error TraverseDirectory:', error);
+                        }
+                    });
+                },
+                OpenFile(path) {
+                    $.ajax({
+                        url: 'File/OpenFile',
+                        type: 'POST',
+                        data: { path: path },
+                        success: (responseData) => {
+                            console.log(responseData);
+                            console.log('OpenFile successfully');
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Error OpenFile:', error);
+                        }
+                    });
+                },
+                getFolderFromPath(filePath) {
+                    // Implement the logic to extract the folder path from the file path
+                    const lastSlashIndex = filePath.lastIndexOf('\\');
+                    const folderPath = filePath.substring(0, lastSlashIndex + 1);
+                    return folderPath;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

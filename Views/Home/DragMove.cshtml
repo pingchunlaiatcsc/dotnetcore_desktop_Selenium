@@ -24,7 +24,7 @@
             }
 
         .odd {
-            width: 90px;
+            width: 85px;
         }
 
         .even {
@@ -55,7 +55,7 @@
         <form v-on:submit.prevent="ReadFromLogWorkshop">
         </form>
 
-        <div id="container">
+        <div id="container" style="max-width:100%;padding:0px">
             <div>
                 <div style="margin-bottom:20px">
                     <div style="margin-bottom:20px">
@@ -247,53 +247,20 @@
         <button class="btn btn-secondary" @@click="WriteToLogWorkshop">寫入</button>
     </div>
 
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">a</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">b</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">c</div>
+    </div>
 
     <script>
-        var dragSrcElement = null;
-        var dragOverElement = null;
-
-        function handleDragStart(e) {
-            dragSrcElement = e.currentTarget;
-            e.dataTransfer.effectAllowed = 'move';
-            if (e.stopPropagation) {
-                e.stopPropagation();
-            }
-        }
-
-        function handleDragEnter(e) {
-            if (e.target.classList.contains('draggable')) {
-                dragOverElement = e.target;
-                e.target.classList.add('drag-over');
-                if (dragSrcElement !== dragOverElement) {
-                    var srcInput = dragSrcElement.querySelector('input');
-                    var overInput = dragOverElement.querySelector('input');
-                    var tempValue = srcInput.value;
-                    srcInput.value = overInput.value;
-                    overInput.value = tempValue;
-                    dragSrcElement = dragOverElement; // 更新 dragSrcElement 當前拖動目標
-                }
-            }
-        }
-
-        function handleDragLeave(e) {
-            if (e.target.classList.contains('draggable')) {
-                e.target.classList.remove('drag-over');
-            }
-        }
-
-        var container = document.getElementById('container');
-        container.addEventListener('dragstart', handleDragStart, false);
-
-        container.addEventListener('dragenter', handleDragEnter, false);
-        container.addEventListener('dragleave', handleDragLeave, false);
-
-        container.addEventListener('dragend', function (e) {
-            if (dragOverElement) {
-                dragOverElement.classList.remove('drag-over');
-            }
-            dragSrcElement = null;
-            dragOverElement = null;
-        });
 
         ////測試用
         //var container = document.getElementById('container_1');
@@ -546,7 +513,6 @@
                         userPassword: this.userPassword,
                         model: this.model
                     };
-                    // 使用 AJAX 發送GET
                     $.ajax({
                         url: 'ReadFromLogWorkshop',
                         type: 'POST',
@@ -626,7 +592,31 @@
                             console.error('Error updating pkl_1 data:', error);
                         }
                     });
-                }
+                },
+                ReadFromKW96() {
+                    var data = {
+                        userId: this.userId,
+                        userPassword: this.userPassword,
+                        rocYear: this.model.TextBox14,
+                        rocMonth: this.model.TextBox1,
+                        rocDay: this.model.DropDownList11,
+                        vendor:""
+                    };
+                    $.ajax({
+                        url: 'ReadFromKW96',
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        success: (responseData) => {
+                            console.log(responseData);
+                            this.dutyOfficers = responseData.DutyOfficers;
+                            console.log('ReadFromKW96 successfully');
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Error ReadFromLogWorkshop:', error);
+                        }
+                    });
+                },
             },
             created() {
                 ReadFromLocal = () => {
@@ -719,6 +709,52 @@
                 }, false);
 
                 container.addEventListener('dragend', (event) => {
+                    if (dragOverElement) {
+                        dragOverElement.classList.remove('drag-over');
+                    }
+                    dragSrcElement = null;
+                    dragOverElement = null;
+                });
+
+                var dragSrcElement = null;
+                var dragOverElement = null;
+
+                function handleDragStart(e) {
+                    dragSrcElement = e.currentTarget;
+                    e.dataTransfer.effectAllowed = 'move';
+                    if (e.stopPropagation) {
+                        e.stopPropagation();
+                    }
+                }
+
+                function handleDragEnter(e) {
+                    if (e.target.classList.contains('draggable')) {
+                        dragOverElement = e.target;
+                        e.target.classList.add('drag-over');
+                        if (dragSrcElement !== dragOverElement) {
+                            var srcInput = dragSrcElement.querySelector('input');
+                            var overInput = dragOverElement.querySelector('input');
+                            var tempValue = srcInput.value;
+                            srcInput.value = overInput.value;
+                            overInput.value = tempValue;
+                            dragSrcElement = dragOverElement; // 更新 dragSrcElement 當前拖動目標
+                        }
+                    }
+                }
+
+                function handleDragLeave(e) {
+                    if (e.target.classList.contains('draggable')) {
+                        e.target.classList.remove('drag-over');
+                    }
+                }
+
+                var container = document.getElementById('container');
+                container.addEventListener('dragstart', handleDragStart, false);
+
+                container.addEventListener('dragenter', handleDragEnter, false);
+                container.addEventListener('dragleave', handleDragLeave, false);
+
+                container.addEventListener('dragend', function (e) {
                     if (dragOverElement) {
                         dragOverElement.classList.remove('drag-over');
                     }
