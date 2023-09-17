@@ -12,7 +12,7 @@
         </div>
         <div v-for="(path, index) in ResultPaths" :key="index">
             <a :href="path" @@click.prevent="OpenFile(path)">{{ path }}</a>
-            <a @@click.prevent="OpenFile(getFolderFromPath(path))">📁</a>
+            <a :href="path" @@click.prevent="OpenFile(getFolderFromPath(path))">📁</a>
         </div>
     </div>
     <script>

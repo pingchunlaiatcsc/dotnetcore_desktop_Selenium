@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using System.IO;
+using OpenQA.Selenium.Chrome;
 
 namespace dotnetcore_desktop_app.Controllers
 {
@@ -59,16 +60,27 @@ namespace dotnetcore_desktop_app.Controllers
                 return Json("success");
             }
         }
+
         [HttpPost]
         public JsonResult TypeToGoogle(string myinput)
         {
-            IWebDriver driver = new EdgeDriver();
-            var url = "https://www.google.com";
-            driver.Navigate().GoToUrl(url);
+            //IWebDriver driver = new EdgeDriver();
+            //var url = "https://www.google.com";
+            //driver.Navigate().GoToUrl(url);
             //service.DriverServicePath = driverLocation;
 
-            IWebElement element = driver.FindElement(By.Name("q"));
-            element.SendKeys(myinput);
+            var service = EdgeDriverService.CreateDefaultService(@".", "msedgedriver.exe");
+            using (IWebDriver driver = new OpenQA.Selenium.Edge.EdgeDriver(service))
+            {
+                driver.Navigate().GoToUrl("https://www.google.com");
+                var source = driver.PageSource;
+                //IWebElement element = driver.FindElement(By.Name("q"));
+                //element.SendKeys(myinput);
+            }
+
+
+            //IWebElement element = driver.FindElement(By.Name("q"));
+            //element.SendKeys(myinput);
             return Json("TypeToGoogle done");
         }
         public IActionResult DragMove()

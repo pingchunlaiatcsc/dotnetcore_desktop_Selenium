@@ -15,9 +15,7 @@ namespace dotnetcore_desktop_app.Controllers
         {            
             if (System.IO.File.Exists(path))
             {
-                // 路徑是檔案，取得檔案所在的資料夾路徑
-                string folderPath = Path.GetDirectoryName(path);
-                System.Diagnostics.Process.Start("explorer", folderPath);
+                System.Diagnostics.Process.Start("explorer", path);
                 return Json("OpenFolder done");
             }
             else if (Directory.Exists(path))

@@ -1,0 +1,345 @@
+﻿@model dotnetcore_desktop_app.ViewModels.ScheduleViewModel
+
+@{
+    int date_count;
+    if (Model != null)
+    {
+        date_count = Model.dates.Count + 1;
+    }
+    else
+    {
+        date_count = 31;
+    }
+}
+<head>
+    <style>
+        .container_schedule {
+            display: grid;
+            grid-template-columns: repeat(@date_count, 55px);
+            grid-template-rows: repeat(23, 55px);
+        }
+
+        .box {
+            width: 45px;
+            height: 45px;
+            background-color: lightblue;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .box_first_column {
+            width: 55px;
+            height: 45px;
+            background-color: cadetblue;
+            font-weight: bold;
+        }
+
+        .box_first_row {
+            width: 55px;
+            height: 45px;
+            background-color: cadetblue;
+            font-weight: bold;
+        }
+
+        .box:hover {
+            background-color: lightgreen;
+        }
+
+        .highlight-row {
+            background-color: yellow;
+        }
+
+        .highlight-column {
+            background-color: orange;
+        }
+
+        div.embossed-shadow {
+            /* margin: 30px 0px; */
+            padding: 5px 0px;
+            background-color: #e9ecef;
+            /*             max-width: 900px; */
+        }
+
+            div.embossed-shadow div {
+                /* margin: 30px auto; */
+                width: 55px;
+                /* height: 120px; */
+                background-color: #e9ecef;
+                border-radius: 30%;
+            }
+                /* 區塊陰影及高光效果 */
+                div.embossed-shadow div.black-shadow {
+                    box-shadow: 6px 6px 16px rgba(0,0,0,0.3);
+                }
+
+                div.embossed-shadow div.white-emboss {
+                    box-shadow: -6px -6px 16px rgba(255,255,255,1);
+                }
+                /* 文字陰影 */
+                div.embossed-shadow div div {
+                    text-align: center;
+                    line-height: 120px;
+                    text-shadow: 2px 2px rgba(255,255,255,0.75);
+                }
+    </style>
+</head>
+<form method="post" action="~/Schedule/Schedule">
+    <div>
+        <input id="userId" name="userId" type="text" placeholder="職工編號" />
+        <input id="userPassword" name="userPassword" type="password" placeholder="密碼" />
+        <input id="month_shift" name="month_shift" placeholder="月偏移=-2,-1,0,1,2,..." />
+        <input type="submit" value="更新" class="btn btn-warning" />
+    </div>
+</form>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="normal-tab" data-bs-toggle="tab" data-bs-target="#normal" type="button" role="tab" aria-controls="normal" aria-selected="true">全</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="night-tab" data-bs-toggle="tab" data-bs-target="#night" type="button" role="tab" aria-controls="night" aria-selected="false">夜</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="morning-tab" data-bs-toggle="tab" data-bs-target="#morning" type="button" role="tab" aria-controls="morning" aria-selected="false">早</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="afternoon-tab" data-bs-toggle="tab" data-bs-target="#afternoon" type="button" role="tab" aria-controls="afternoon" aria-selected="false">中</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="normal" role="tabpanel" aria-labelledby="normal-tab">
+        <div class="container_schedule">
+        @if (Model != null)
+        {
+            <div class="embossed-shadow">
+                <div class="black-shadow">
+                    <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(0, 0)">@Model.dates[0].Month</div>
+                </div>
+            </div>
+
+            int date_i = 1;
+
+            @foreach (DateTime date in Model.dates)
+            {
+                <div class="embossed-shadow">
+                    <div class="black-shadow">
+                        <div class="box box_first_row white-emboss" onmouseover="highlightRowAndColumn(0, @date_i)">@date.ToString("dd")</div>
+                    </div>
+                </div>
+                date_i++;
+            }
+
+            int j = 1;
+            @foreach (dotnetcore_desktop_app.Models.ScheduleModel emp in Model.schedules)
+            {
+                int i = 0;
+                <div class="embossed-shadow">
+                    <div class="black-shadow">
+                        <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(@j, @i)">@emp.employee.CNAME_PBA0.Trim()</div>
+                    </div>
+                </div>
+                i++;
+                foreach (var WorkShiftList in emp.WorkShiftList)
+                {
+                    <div class="box" onmouseover="highlightRowAndColumn(@j, @i)">@WorkShiftList</div>
+                    i++;
+                }
+                i = 1;
+                j++;
+            }
+
+        }
+    </div>
+    </div>
+    <div class="tab-pane fade" id="night" role="tabpanel" aria-labelledby="night-tab">
+        <div class="container_schedule">
+            @if (Model != null)
+            {
+                <div class="embossed-shadow">
+                    <div class="black-shadow">
+                        <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(0, 0)">@Model.dates[0].Month</div>
+                    </div>
+                </div>
+
+                int date_i = 1;
+
+                @foreach (DateTime date in Model.dates)
+                {
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_row white-emboss" onmouseover="highlightRowAndColumn(0, @date_i)">@date.ToString("dd")</div>
+                        </div>
+                    </div>
+                    date_i++;
+                }
+
+
+                int j = 1;
+                @foreach (dotnetcore_desktop_app.Models.ScheduleModel emp in Model.schedules)
+                {
+                    int i = 0;
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(@j, @i)">夜班</div>
+                        </div>
+                    </div>
+                    i++;
+                    foreach (var WorkShiftList in emp.WorkShiftList)
+                    {
+                        if (WorkShiftList == "01")
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)">@emp.employee.CNAME_PBA0.Trim()</div>
+                        }
+                        else
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)"></div>
+                        }
+                        i++;
+                    }
+                    i = 1;
+                    j++;
+                }
+            }
+        </div>
+    </div>
+    <div class="tab-pane fade" id="morning" role="tabpanel" aria-labelledby="morning-tab">
+        <div class="container_schedule">
+            @if (Model != null)
+            {
+                <div class="embossed-shadow">
+                    <div class="black-shadow">
+                        <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(0, 0)">@Model.dates[0].Month</div>
+                    </div>
+                </div>
+
+                int date_i = 1;
+
+                @foreach (DateTime date in Model.dates)
+                {
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_row white-emboss" onmouseover="highlightRowAndColumn(0, @date_i)">@date.ToString("dd")</div>
+                        </div>
+                    </div>
+                    date_i++;
+                }
+
+
+                int j = 1;
+                @foreach (dotnetcore_desktop_app.Models.ScheduleModel emp in Model.schedules)
+                {
+                    int i = 0;
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(@j, @i)">早班</div>
+                        </div>
+                    </div>
+                    i++;
+                    foreach (var WorkShiftList in emp.WorkShiftList)
+                    {
+                        if (WorkShiftList == "02")
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)">@emp.employee.CNAME_PBA0.Trim()</div>
+                        }
+                        else
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)"></div>
+                        }
+                        i++;
+                    }
+                    i = 1;
+                    j++;
+                }
+            }
+        </div>
+    </div>
+    <div class="tab-pane fade" id="afternoon" role="tabpanel" aria-labelledby="afternoon-tab">
+        <div class="container_schedule">
+            @if (Model != null)
+            {
+                <div class="embossed-shadow">
+                    <div class="black-shadow">
+                        <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(0, 0)">@Model.dates[0].Month</div>
+                    </div>
+                </div>
+
+                int date_i = 1;
+
+                @foreach (DateTime date in Model.dates)
+                {
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_row white-emboss" onmouseover="highlightRowAndColumn(0, @date_i)">@date.ToString("dd")</div>
+                        </div>
+                    </div>
+                    date_i++;
+                }
+
+
+                int j = 1;
+                @foreach (dotnetcore_desktop_app.Models.ScheduleModel emp in Model.schedules)
+                {
+                    int i = 0;
+                    <div class="embossed-shadow">
+                        <div class="black-shadow">
+                            <div class="box box_first_column white-emboss" onmouseover="highlightRowAndColumn(@j, @i)">中班</div>
+                        </div>
+                    </div>
+                    i++;
+                    foreach (var WorkShiftList in emp.WorkShiftList)
+                    {
+                        if (WorkShiftList == "03")
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)">@emp.employee.CNAME_PBA0.Trim()</div>
+                        }
+                        else
+                        {
+                            <div class="box" onmouseover="highlightRowAndColumn(@j, @i)"></div>
+                        }
+                        i++;
+                    }
+                    i = 1;
+                    j++;
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function highlightRowAndColumn(row, col) {
+        const boxes = document.querySelectorAll('.box');
+
+        for (let i = 0; i < boxes.length; i++) {
+            const boxRow = Math.floor(i / @date_count);
+            const boxCol = i % @date_count;
+
+            if (boxRow === row || boxCol === col) {
+                boxes[i].classList.add('highlight-row');
+                boxes[i].classList.add('highlight-column');
+            } else {
+                boxes[i].classList.remove('highlight-row');
+                boxes[i].classList.remove('highlight-column');
+            }
+        }
+    }
+
+    const boxes = document.querySelectorAll('.box');
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener('mouseout', () => {
+            for (let j = 0; j < boxes.length; j++) {
+                boxes[j].classList.remove('highlight-row');
+                boxes[j].classList.remove('highlight-column');
+            }
+        });
+    }
+</script>
+
+
