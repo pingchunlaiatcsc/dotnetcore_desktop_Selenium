@@ -40,7 +40,7 @@ namespace dotnetcore_desktop_app.Controllers
 
             ScheduleViewModel scheduleViewModel = new ScheduleViewModel();
             List<ScheduleModel> tmp_scheduleModelList = new List<ScheduleModel>();
-            for (int i = 0; i < tmp_pbjg2F.memberList.Count - 1; i++)
+            for (int i = 0; i < tmp_pbjg2F.memberList.Count; i++)
             {
                 ScheduleModel schedule_model = new ScheduleModel()
                 {
