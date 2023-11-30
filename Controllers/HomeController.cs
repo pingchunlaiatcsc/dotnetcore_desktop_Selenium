@@ -148,7 +148,6 @@ namespace dotnetcore_desktop_app.Controllers
         public JsonResult WriteToLogWorkshop([FromBody] LogWorkshopViewModel modelData)
         {
             eip = new EIP(modelData.userId, modelData.userPassword);
-            eip.Login();
             LogWorkshop logWorkshop = new LogWorkshop(eip, modelData.model);
             logWorkshop.Write();
 
