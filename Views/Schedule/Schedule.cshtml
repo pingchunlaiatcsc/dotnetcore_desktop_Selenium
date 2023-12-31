@@ -72,6 +72,10 @@
         <input id="month_shift" name="month_shift" placeholder="月偏移=-2,-1,0,1,2,..." />
         <input type="submit" value="更新" class="btn btn-warning" />
     </div>
+    <div>
+        <input type="button" value="上一個月" onclick="changeMonth(-1)" />
+        <input type="button" value="下一個月" onclick="changeMonth(1)" />
+    </div>
 </form>
 
 <div>按下1,2,3,4可切換班別</div>
@@ -411,5 +415,57 @@
             }
         }
 
+    }
+</script>
+
+<script>
+    //********************************************************
+    //下方這段javascript是用來處理上一個月、下一個月按鈕的功能
+    //********************************************************
+
+    // 將初始化月份偏移放在頁面載入時執行
+    document.addEventListener('DOMContentLoaded', function () {
+        // 檢查 localStorage 是否有保存的月份偏移
+        var storedMonthShift = localStorage.getItem('currentMonthShift');
+
+        // 如果有保存的月份偏移，將其應用於 month_shift 輸入框
+        if (storedMonthShift !== null) {
+            document.getElementById('month_shift').value = storedMonthShift;
+        }
+    });
+
+    function changeMonth(monthOffset) {
+        var currentMonthShiftInput = document.getElementById('month_shift');
+        var currentMonthShift = parseInt(currentMonthShiftInput.value) || 0;
+
+        // Increase month offset
+        currentMonthShift += monthOffset;
+
+        // Update month shift input value
+        currentMonthShiftInput.value = currentMonthShift;
+
+        // 使用 localStorage 保存目前瀏覽的月份
+        localStorage.setItem('currentMonthShift', currentMonthShift);
+
+        // Get the current URL
+        var currentUrl = window.location.href;
+
+        // Update the URL with the new month shift as a query parameter
+        var updatedUrl = updateQueryStringParameter(currentUrl, 'month_shift', currentMonthShift);
+
+        // Redirect to the updated URL
+        window.location.href = updatedUrl;
+    }
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
     }
 </script>

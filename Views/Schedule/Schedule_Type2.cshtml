@@ -1,0 +1,183 @@
+﻿@model dotnetcore_desktop_app.ViewModels.ScheduleViewModel
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .night_td {
+            background-color: grey
+        }
+        .morning_td{
+            background-color:lightblue
+        }
+
+        .afternoon_td {
+            background-color: orange
+        }
+    </style>
+</head>
+<form method="post" action="~/Schedule/Schedule_Type2">
+    <div>
+        <input id="userId" name="userId" type="text" placeholder="職工編號" />
+        <input id="userPassword" name="userPassword" type="password" placeholder="密碼" />
+        <input id="month_shift" name="month_shift" placeholder="月偏移=-2,-1,0,1,2,..." />
+        <input type="submit" value="更新" class="btn btn-warning" />
+    </div>
+    <div>
+        <input type="button" value="上一個月" onclick="changeMonth(-1)" />
+        <input type="button" value="下一個月" onclick="changeMonth(1)" />
+    </div>
+</form>
+
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                @foreach (DateTime day in Model.dates)
+                {
+                    <td colspan="3">@day.ToString("MM/dd")</td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int day_index = 0;
+            }
+            <tr>
+                @foreach (DateTime day in Model.dates)
+                {
+                    <td class="night_td">夜</td>
+                    <td class="morning_td">早</td>
+                    <td class="afternoon_td">中</td>
+                }
+            </tr>
+            @functions {
+            private class Attendance_table_data
+            {
+                public List<string> every_day_attendance_01_list;
+                public List<string> every_day_attendance_02_list;
+                public List<string> every_day_attendance_03_list;
+            }
+        }
+
+        @{
+                List<Attendance_table_data> every_day_attendance_ALL_list = new List<Attendance_table_data>();
+                int table_row_uperbound = 0;
+                // 決定table列數
+                @foreach (DateTime day in Model.dates)
+                {
+                    List<string> every_day_attendance_01_list = new List<string>();
+                    List<string> every_day_attendance_02_list = new List<string>();
+                    List<string> every_day_attendance_03_list = new List<string>();
+                    foreach (dotnetcore_desktop_app.Models.ScheduleModel emp in Model.schedules)
+                    {
+                        var current_name = emp.employee.CNAME_PBA0.Trim();
+                        var current_day = day;
+                        var current_turn = emp.WorkShiftList.ElementAt(day_index);
+                        if (emp.WorkShiftList.ElementAt(day_index) == "01")
+                        {
+                            every_day_attendance_01_list.Add(@emp.employee.CNAME_PBA0.Trim() + "01");
+                        }
+                        table_row_uperbound = every_day_attendance_01_list.Count > table_row_uperbound ? every_day_attendance_01_list.Count : table_row_uperbound;
+
+                        if (emp.WorkShiftList.ElementAt(day_index) == "02")
+                        {
+                            every_day_attendance_02_list.Add(@emp.employee.CNAME_PBA0.Trim() + "02");
+                        }
+                        table_row_uperbound = every_day_attendance_02_list.Count > table_row_uperbound ? every_day_attendance_02_list.Count : table_row_uperbound;
+
+                        if (emp.WorkShiftList.ElementAt(day_index) == "03")
+                        {
+                            every_day_attendance_03_list.Add(@emp.employee.CNAME_PBA0.Trim() + "03");
+                        }
+                        table_row_uperbound = every_day_attendance_03_list.Count > table_row_uperbound ? every_day_attendance_03_list.Count : table_row_uperbound;
+                    }
+                    Attendance_table_data tmp_Attendance_table_data = new Attendance_table_data();
+                    tmp_Attendance_table_data.every_day_attendance_01_list = every_day_attendance_01_list;
+                    tmp_Attendance_table_data.every_day_attendance_02_list = every_day_attendance_02_list;
+                    tmp_Attendance_table_data.every_day_attendance_03_list = every_day_attendance_03_list;
+                    every_day_attendance_ALL_list.Add(tmp_Attendance_table_data);
+                    day_index++;
+                }
+                day_index = day_index;
+            }
+
+            @for (int i = 0; i < table_row_uperbound; i++)
+            {
+                <tr>
+                    @foreach (Attendance_table_data day in every_day_attendance_ALL_list)
+                    {
+                        <td class="night_td">
+                            @if (day.every_day_attendance_01_list.Count > i)
+                            {
+                                @day.every_day_attendance_01_list.ElementAt(i)
+                            }
+                        </td>
+                        <td class="morning_td">
+                            @if (day.every_day_attendance_02_list.Count > i)
+                            {
+                                @day.every_day_attendance_02_list.ElementAt(i)
+                            }
+                        </td>
+                        <td class="afternoon_td">
+                            @if (day.every_day_attendance_03_list.Count > i)
+                            {
+                                @day.every_day_attendance_03_list.ElementAt(i)
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<script>
+    // 將初始化月份偏移放在頁面載入時執行
+    document.addEventListener('DOMContentLoaded', function () {
+        // 檢查 localStorage 是否有保存的月份偏移
+        var storedMonthShift = localStorage.getItem('currentMonthShift');
+
+        // 如果有保存的月份偏移，將其應用於 month_shift 輸入框
+        if (storedMonthShift !== null) {
+            document.getElementById('month_shift').value = storedMonthShift;
+        }
+    });
+
+    function changeMonth(monthOffset) {
+        var currentMonthShiftInput = document.getElementById('month_shift');
+        var currentMonthShift = parseInt(currentMonthShiftInput.value) || 0;
+
+        // Increase month offset
+        currentMonthShift += monthOffset;
+
+        // Update month shift input value
+        currentMonthShiftInput.value = currentMonthShift;
+
+        // 使用 localStorage 保存目前瀏覽的月份
+        localStorage.setItem('currentMonthShift', currentMonthShift);
+
+        // Get the current URL
+        var currentUrl = window.location.href;
+
+        // Update the URL with the new month shift as a query parameter
+        var updatedUrl = updateQueryStringParameter(currentUrl, 'month_shift', currentMonthShift);
+
+        // Redirect to the updated URL
+        window.location.href = updatedUrl;
+    }
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    }
+</script>

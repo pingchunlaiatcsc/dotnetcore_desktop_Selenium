@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<DUsersHappyaimonkeySourceReposDotnetcoreDesktopAppDataMydbMdfContext>(options => options.UseSqlServer(
 //    builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<DataContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ScheduleForSQLite_DataContext>(options=>options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Fix return Json() capitalization problem
 builder.Services.Configure<JsonOptions>(options =>
