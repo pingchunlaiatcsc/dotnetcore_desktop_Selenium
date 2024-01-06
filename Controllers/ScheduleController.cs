@@ -9,7 +9,6 @@ using NPOI.XSSF.UserModel;
 using prjC349WebMVC.Library.WebCrawler;
 using System.Collections;
 using System.Net;
-using static prjC349WebMVC.Library.WebCrawler.pbjg2F.Model;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Newtonsoft.Json;
 using System;
@@ -21,7 +20,20 @@ namespace dotnetcore_desktop_app.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            string month_shift = "0";
+            month_shift = month_shift == null ? "0" : month_shift;
+            string filePath = @"History_attendance_data\" + DateTime.Now.AddMonths(Int32.Parse(month_shift)).ToString("yyyy-MM") + "_attendance.json";
+            ScheduleViewModel deserializedViewModel = null;
+            if (System.IO.File.Exists(filePath))
+            {
+                // Read the JSON string from the file
+                string json = System.IO.File.ReadAllText(filePath);
+
+                // Deserialize the JSON string to a ScheduleViewModel object
+                deserializedViewModel = JsonConvert.DeserializeObject<ScheduleViewModel>(json);
+
+            }
+            return View(deserializedViewModel);
         }
 
         [HttpGet]

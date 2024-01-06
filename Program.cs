@@ -46,7 +46,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Schedule}/{action=Schedule}/{id?}");
+    //pattern: "{controller=Schedule}/{action=Schedule}/{id?}");
+    pattern: "{controller=C341TaskSimulate}/{action=Index}");
 if (!app.Environment.IsDevelopment())
 {
     Process.Start(new ProcessStartInfo("cmd", $"/c start {url}")
