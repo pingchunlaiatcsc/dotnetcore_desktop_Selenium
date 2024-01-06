@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/resources/dpms/images/favicon.ico">
+<title>IA77- 厚板倉庫儲位資訊查詢</title>
+<link href="/resources/dpms/styles/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/dpms/styles/font-awesome.min.css" rel="stylesheet">
+<!-- FormValidation CSS file -->
+<link href="/resources/dpms/styles/formValidation.min.css" rel="stylesheet">
+<!-- Bootstrap Datepicker CSS file -->
+<link href="/resources/dpms/styles/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+<!-- Bootstrap Table CSS file -->
+<link href="/resources/dpms/styles/bootstrap-table.min.css" rel="stylesheet">
+<link href="/resources/dpms/styles/case-ui.css" rel="stylesheet">
+<link href="/resources/dpms/styles/jquery.typeahead.min.css" rel="stylesheet">
+<!-- DPMS -->
+<link href="/resources/dpms/styles/blue-menu.css" rel="stylesheet">
+<link href="/resources/dpms/styles/main.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="/resources/dpms/javascripts/html5shiv.min.js"></script>
+      <script src="/resources/dpms/javascripts/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Dynamic Loader for stylesheets -->
+<!-- Start of script -->
+<script	src="/resources/dpms/javascripts/jquery-1.12.0.min.js"></script>
+<script src="/resources/dpms/javascripts/bootstrap.min.js"></script>
+<!-- FormValidation plugin and the class supports validating Bootstrap form -->
+<script	src="/resources/dpms/javascripts/formValidation.min.js"></script>
+<script	src="/resources/dpms/javascripts/framework/bootstrap.min.js"></script>
+<script	src="/resources/dpms/javascripts/language/zh_TW.js"></script>
+<!-- Bootstrap Datepicker plugin -->
+<script	src="/resources/dpms/javascripts/bootstrap-datepicker.min.js"></script>
+<script	src="/resources/dpms/javascripts/language/bootstrap-datepicker.zh-TW.min.js"></script>
+<!-- Bootstrap Table plugin -->
+<script src="/resources/dpms/javascripts/bootstrap-table.min.js"></script>
+<script	src="/resources/dpms/javascripts/language/bootstrap-table-zh-TW.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script	src="/resources/dpms/javascripts/ie10-viewport-bug-workaround.js"></script>
+<!-- DPMS -->
+<script	src="/resources/dpms/javascripts/lib/i18n/i18n.min.js"></script>
+<script src="/resources/dpms/javascripts/i18n/zh_TW.js"></script>
+<script src="/resources/dpms/javascripts/main.js"></script>
+<!-- Typeahead plugin -->
+<script	src="/resources/dpms/javascripts/jquery.typeahead.min.js"></script>
+<!-- CASE UI plugin -->
+<!-- Dynamic Loader for javascript -->
+<!-- Application I18N -->
+<script type="text/javascript">
+var caseDefaultLocale = "zh_TW";
+</script>
+</head>
+<body>
+	<div class="container-fluid container-csc-header">
+		<div>
+			<table class="table table-header-csc hidden-xs">
+	<tbody>
+		<tr class="text-center">
+			<td class="header-csc-trans" nowrap>-IA77-</td>
+			
+			<td class="header-csc-user">
+				<span class="user-id">214585</span><br />
+				<span class="user-name">賴丙鈞</span>
+			</td>
+			
+			<td class="header-csc-title">		
+				厚板倉庫儲位資訊查詢<!-- Button trigger modal -->
+				<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#feedbackInfo" title="意見回饋" style="margin-bottom: 6px; height: 25px;">
+				  <i class="fa fa-pencil-square-o" style="font-size:20px;color:black;"></i>
+				</button>
+				</td>
+
+			<td class="header-csc-contact">
+				<table align="center" class="header-csc-info-table">
+					<tr>
+						<td>
+							<a class="business" href="#" tabindex="0" role="button" data-toggle="popover"
+							    data-business-comp="0000"
+								  data-business-id="152710" 
+								  data-business-name="陳順榮" 
+								  data-business-phone="5730">業務聯絡人</a>
+						</td>
+						</tr>
+					
+					<tr>
+						<td>
+							<a class="system" href="#" tabindex="0" role="button" data-toggle="popover"
+							    data-system-comp="0002" 
+								  data-system-id="I22013" 
+								  data-system-name="陳建璋" 
+								  data-system-phone="6956">系統負責人</a>
+						</td>					
+						</tr>
+					
+				</table>
+			</td>
+			<td class="header-csc-time"><span class="current-time"></span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<nav class="navbar navbar-default visible-xs-block" id="case-navbar">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#case-navbar-links" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">厚板倉庫儲位資訊查詢</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->    
+    <div class="collapse navbar-collapse case-menu" id="case-navbar-links">
+      <ul class="nav navbar-nav">
+        <li><a href="#">-IA77-</a></li>
+        <li><a href="#"><span class="user-id">214585</span><br /><span class="user-name">賴丙鈞</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">問題諮詢<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">業務聯絡人：152710陳順榮5730</a></li>
+            <li><a href="#">系統負責人：I22013陳建璋6956</a></li>            
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="visible-xs-block" style="height: 50px; display: block; margin-top: 5px" id="case-navbar-block">
+</div><!-- /.visible-xs-block -->
+
+
+<!-- feedback -->
+<div class="modal fade" id="feedbackInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #41829e; text-align: center;">
+          <h1><font color="white">意見回饋</font></h1>
+      </div>
+      
+      <div class="modal-body">
+        <form>            
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">
+              請說明您的問題或分享您的想法:
+            </label>
+            <textarea id="message-text" class="form-control" cols="10" rows="15"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label style="font-size: 13px;">
+                感謝您所提供的資訊，有助於我們解決技術問題及改善服務品質；<br>
+                如該作業您使用上有確切的需求，仍須請您於《<a href="http://intra7.csc.com.tw/mis/DC/DC_CMMI_WebSite/DC10/DCAU10.aspx" target="_blank" style="color: blue;" >CMMI</a>》提出申請，感謝您的配合。<br>
+            </label>
+          </div>
+          
+          <div style="display: none">
+            <span id="fb-app-id">IA77</span>
+            <span id="fb-contextpath"></span>
+            <span id="fb-user-gcid">0000</span>
+            <span id="fb-user-guid">214585</span>
+            <span id="fb-user-dept">C341</span>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal" id="case-header-cancel">取消</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" id="case-header-send">送出</button>
+      </div> 
+    </div>
+
+  </div>
+</div>
+</div>
+	</div>
+	<div class="hide case-properties" data-case-context-path=""></div>
+	<script type="text/javascript">
+	<!--
+		var CONTEXT_PATH = $(".case-properties").data("case-context-path");
+		var CASE_VALIDATIONS = JSON
+				.parse('{}'.replace(
+						/</g, '&lt;').replace(/>/g, '&gt;'));
+	//-->
+	</script>
+	<div class="container-fluid container-csc-body">
+		<div class="row navbar navbar-csc hidden-xs" role="navigation">
+				<nav class="navbar navbar-default navbar-csc">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar-content-csc">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse case-menu" id="navbar-content-csc">
+						
+
+<ul class="nav navbar-nav">
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle"
+			data-toggle="dropdown">儲位設定<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="../location/ia7n" target="_self">IA7N-厚板庫段查詢作業</a></li>
+			<li><a href="../location/ia7f" target="_self">IA7F-厚板各庫儲區設定</a></li>
+			<li><a href="../location/ia7c" target="_self">IA7C-待出貨勿壓儲位登錄作業 </a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle"
+			data-toggle="dropdown">倉儲管理<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="../location/ia77" target="_self">IA77-厚板倉庫儲位資訊查詢 </a></li>
+			<li><a href="../location/ia7b" target="_self">IA7B-LEEWAY厚板庫存查詢作業 </a></li>	
+			<li><a href="../location/ia7g" target="_self">IA7G-厚板各庫儲位資訊彙整查詢</a></li>
+			<li><a href="../location/ia7h" target="_self">IA7H-厚板各庫庫存狀態摘要查詢</a></li>
+			<li><a href="../location/ia7l" target="_self">IA7L-鋼板外搬作業歷程查詢與統計作業</a></li>
+			<li><a href="../location/ia7m" target="_self">IA7M-鋼板入儲預排儲位作業</a></li>
+			<li><a href="../location/ia7m" target="_self">IA7P-待回線鋼板資訊追蹤作業</a></li>
+		</ul>
+	</li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle"
+			data-toggle="dropdown">出貨管理<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="../location/ia7j" target="_self">IA7J-鋼板內銷儲位查詢及計畫量設定</a></li>
+			<li><a href="../location/ia7k" target="_self">IA7K-裝船配艙可出各庫外銷存貨量查詢</a></li>
+			<li><a href="../location/ia7d" target="_self">IA7D-厚板倉庫庫段出貨封閉作業 </a></li>
+			<li><a href="../location/ia7e" target="_self">IA7E-庫房提貨車輛排隊資訊</a></li>
+		</ul>
+	</li>
+</ul>
+</div>
+				</nav>
+			</div>
+
+			<script type="text/javascript">
+				$(function() {
+					// 自動根據頁面highlight menu選項
+					var progId = location.pathname.substr(
+							location.pathname.length - 4, 4);
+					var $menu = $('.case-menu').find(
+							'li a[href$=' + progId + ']')
+
+					// 在<li>增加active class，標記此menu
+					$menu.parent().addClass('active')
+
+					// 若這是子目錄階層，則連父親的menu選單都要標記
+					$menu.parent().parent('ul').parent('li').addClass('active');
+				})
+			</script>
+		<div
+				class="row alert alert-info alert-csc alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert">
+					<span aria-hidden="true">×</span>
+				</button>
+				查詢完成</div>
+		<div >
+			
+
+
+
+<link href="/resources/ds/styles/select2.min.css"
+	rel="stylesheet">
+<link
+	href="/resources/ds/styles/bootstrap-tagsinput.css"
+	rel="stylesheet">
+
+<link href="/resources/ia/styles/iaTable.css"
+	rel="stylesheet">
+<link href="/resources/ia/styles/ia77.css"
+	rel="stylesheet">
+<link href="/resources/ia/styles/iaCommon.css"
+	rel="stylesheet">
+<!-- table匯出資料用 css -->
+<link
+	href="/resources/ia/styles/bootstrap-table.min.css"
+	rel="stylesheet">
+
+<!-- table匯出資料用  -->
+<script type="text/javascript"
+	src="/resources/ia/javascripts/bootstrap-table.min.js"></script>
+<script type="text/javascript"
+	src="/resources/ia/javascripts/bootstrap-table-export.min.js"></script>
+<script type="text/javascript"
+	src="/resources/ia/javascripts/tableExport.min.js"></script>
+<!-- table匯出資料用  end -->
+<script type="text/javascript"
+	src="http://js.csc.com.tw/js/gejs01e.js"></script>
+<script type="text/javascript"
+	src="/resources/ia/javascripts/ia77.js"></script>
+<script type="text/javascript"
+	src="/resources/ia/javascripts/checkBox.js"></script>
+<script type="text/javascript"
+	src="/resources/ia/javascripts/iaUIMask.js"></script>
+<script src="/resources/ds/javascripts/select2.min.js"></script>
+<script
+	src="/resources/ds/javascripts/bootstrap-tagsinput.min.js"></script>
+<script
+	src="/resources/ds/javascripts/case-ds-ui-1.0.js"></script>
+
+
+<!-- BLOCK UI Modal (START)-->
+<div class="modal" role="dialog" id="pleaseWaitDialog"
+	data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>
+					<i class="fa fa-spinner fa-pulse fa-fw"></i> 處理中，請稍候...
+				</h3>
+			</div>
+			<div class="modal-body">
+				<div class="progress progress-striped active">
+					<div class="progress-bar" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- BLOCK UI Modal (END)-->
+
+<!-- 厚板儲區查詢（依儲區查詢） -->
+<OBJECT classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" height="0" id="wb" name="wb" width="0"></OBJECT>
+
+<form class="form form-inline" id="mainForm" action="ia77" method="POST">
+	<div class="input-group">
+		<span class="input-group-addon">儲位起</span> 
+		<input type="text" class="form-control" style="width: 60px" name="loc"
+			value="9007F" maxlength="5" onfocus="FieldSelect(this)" onKeyUp="return autoTab(this, 5, event)">
+		 
+		<span class="input-group-addon">儲位迄</span> 
+		<input class="form-control"	style="width: 60px" name="locto" value="9007F"
+			maxlength="5" onfocus="FieldSelect(this)">
+			
+		<span class="input-group-addon">排序</span>
+		<select id="orderby" name="orderby" class="form-control" style="width: 80px">
+			<option value="lvl" selected>依層數</option>
+			<option value="ord" >依訂單(IA73)</option>
+			<option value="ia74" >IA74</option>
+			<option value="lift" >依吊移</option>
+			<option value="leeway" >LY出貨</option>
+			<option value="moveout" >依外搬</option>
+			<option value="w41" >W41</option>
+		</select> 
+			
+		<span class="input-group-btn">
+			<button class="btn btn-primary" type="submit" name="_action" value="read">
+				<i class="fa fa-search"></i> 查詢
+			</button>
+		</span>
+			
+		<input type="hidden" class="form-control" id="func" name="func"	value="newRead"> 
+		<input type="hidden" class="form-control" name="lastloc" value="" maxlength="5"> 
+			
+		<span class="input-group-btn">
+			<button class="btn btn-info" type="submit" name="_action" value="readPrev">
+				<i class="fa fa-search"></i> 上一儲位
+			</button>
+		</span> 
+			
+		<input type="hidden" class="form-control" name="nextloc" value="" maxlength="5"> 
+		
+		<span class="input-group-btn">
+			<button class="btn btn-info" type="submit" name="_action" value="readNext">
+				<i class="fa fa-search"></i> 下一儲位
+			</button>
+		</span>
+
+		<span class="input-group-btn"> 
+			<button class="btn btn-warning" id="print" type="button">
+				<i class="fa fa-print"></i> 列印
+			</button>
+		</span>
+		
+		<span class="input-group-btn">
+			<button class="btn btn-primary" id="locStockQuery" type="button">
+				<i class="fa fa-search"></i> 鋼板庫存
+			</button>
+		</span>
+		
+		<span class="input-group-addon">放行片/總片數</span> 
+			<input type="text" readonly="readonly" class="form-control" style="width: 40px"
+						name="totPcs" value="16" maxlength="3">
+		
+		<span class="input-group-addon">/</span> 
+		<input type="text" readonly="readonly" class="form-control" style="width: 40px"
+						name="totPcs" value="16" maxlength="3">
+		<span class="input-group-addon">總重量</span> <input type="text"	readonly="readonly" class="form-control" style="width: 80px"
+						name="totWgt" value="61,090" maxlength="10"> 
+		
+	</div> 
+			
+	<abbr id="tooltip" class="test" data-toggle="tooltip" data-html="true" data-placement="bottom"
+		title="OP<br />
+				A：一般_薄  </br> 
+				B：一般_厚  </br> 
+				C：一般_超厚  </br> 
+				D ：RJ_薄  </br> 
+				E：RJ_厚  </br>
+		       	F：RJ_超厚  </br> 
+		       	H：SM570(特殊鋼)_薄 </br> 
+		       	I：SM570(特殊鋼)_厚 </br> 
+		       	J：SM570(特殊鋼)_超厚 </br> 
+				L：中高碳_薄 </br> 
+				M：中高碳_厚 </br> 
+				N：中高碳_超厚 </br> 
+				T：SAE1345_薄 </br> 
+				U：SAE1345_厚 </br> 
+				V：SAE1345_超厚 </br> 
+				W：超長寬_薄 </br> 
+				X：超長寬_厚 </br> 
+				Y：超長寬_超厚 </br> 
+				Z：當日出貨之 LEEWAY<br /> 
+			<hr>
+				調移<br />
+				*：AP板<br />
+				#：不可露儲<br />
+				紅底：IA60註記HOLD
+			<hr>
+				吊移日<br /> 
+				帳齡逾4個月為紅字<br /> 
+				，逾6個月為紅底
+			<hr>黃底:非接單尺寸(leeway)，<br>
+				非C341接收範圍(一級品)"
+		>
+		<i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
+	</abbr>				
+
+<!-- table -->
+	<div>
+		<table id="dataTable"
+			class="table table-condensed table-bordered table-hover"
+			data-toggle="case-table" data-pagination="false"
+			data-search="false" data-sortable="false" data-show-columns="true"
+			data-escape="false" data-page-size=200 data-show-export="true">
+			<thead>
+				<tr>
+					<th class="col-sm-0.1 text-center" data-field="op" data-sortable="true"	data-visible="true">
+						OP
+					</th>
+					<th class="col-sm-0.2 text-center" data-field="loc2" data-sortable="true" data-visible="false">
+						儲位
+					</th>
+					<th class="col-sm-0.2 text-center" data-field="lvl" data-sortable="true" data-visible="true">
+						層數
+					</th>
+					<th class="col-sm-1 text-center" data-sortable="true">
+						訂單編號
+					</th>
+					<th class="col-sm-1 text-center" data-field="loadNo" data-sortable="true" data-visible="false">
+						提單
+					</th>
+					<th class="col-sm-0.4 text-center" data-field="shipToCode" data-sortable="true" data-visible="false">
+						交地
+					</th>
+					<th class="col-sm-1 text-center" data-field="liftNo" data-sortable="true" data-visible="true">
+						調移
+					</th>
+					<th class="col-sm-1 text-center" data-field="itemKgPcs" data-sortable="true" data-visible="true">
+						單重
+					</th>
+					<th class="col-sm-0.3 text-center" data-field="thk" data-sortable="true" data-visible="true">
+						厚度
+					</th>
+					<th class="col-sm-0.5 text-center" data-field="wth" data-sortable="true" data-visible="true">
+						寬度
+					</th>
+					<th class="col-sm-0.5 text-center" data-field="lth" data-sortable="true" data-visible="true">
+						長度
+					</th>
+					<th class="col-sm-1 text-center" data-field="liftNo2" data-sortable="true" data-visible="false">
+						調移
+					</th>
+					<th class="col-sm-0.3 text-center" data-sortable="true">
+						片
+					</th>
+					<th class="col-sm-0.3 text-center" data-field="ok" data-sortable="true" data-visible="true">
+						OK
+					</th>
+					<th class="col-sm-1 text-center" data-field="itemKgPcs2" data-sortable="true" data-visible="false">
+						單重
+					</th>
+					<th class="col-sm-1 text-center" data-field="loadNo2" data-sortable="true" data-visible="true">
+						提單
+					</th>
+					<th class="col-sm-0.8 text-center" data-field="liftDate" data-sortable="true" data-visible="false">
+						吊移
+					</th>
+					<th class="col-sm-0.8 text-center" data-field="liftDateE" data-visible="false">
+						吊移8
+					</th>
+					<th class="col-sm-0.8 text-center" data-field="lifoutDate" data-sortable="true" data-visible="true">
+						吊異
+					</th>
+					<th class="col-sm-0.8 text-center" data-field="lifoutDateE" data-visible="false">
+						吊異8
+					</th>
+					<th class="col-sm-1 text-center" data-field="shipReq" data-sortable="true" data-visible="true">
+						交期
+					</th>
+					<th class="col-sm-0.4 text-center" data-field="shipToCode2" data-sortable="true" data-visible="true">
+						交地
+					</th>
+					<th class="col-sm-1.4 text-center" data-field="custAbbName" data-sortable="true" data-visible="true">
+						客戶
+					</th>
+					<th class="col-sm-1.4 text-center" data-field="custNmC" data-sortable="true" data-visible="false">
+						訂單客戶
+					</th>
+					<th class="col-sm-1.4 text-center" data-field="spec" data-sortable="true" data-visible="false">
+						鋼種
+					</th>
+					<th class="col-sm-1 text-center" data-field="pltStus" data-sortable="true" data-visible="false">
+						鋼板軋序
+					</th>
+					<th class="col-sm-0.2 text-center" data-field="loc" data-sortable="true" data-visible="true">
+						儲位
+					</th>
+					<th class="col-sm-0.2 text-center" data-field="plateType" data-sortable="true" data-visible="true">
+						分類
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[0].opt" name="pltTypeLists[0].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].loc2" name="pltTypeLists[0].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].LVL1" name="pltTypeLists[0].LVL1">08</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[0].ordItem" name="pltTypeLists[0].ordItem">TP7207E001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].loadNo" name="pltTypeLists[0].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].shipToCode" name="pltTypeLists[0].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[0].liftNo" name="pltTypeLists[0].liftNo">H0420</label>
+							<label id="pltTypeLists[0].rollWeek" name="pltTypeLists[0].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].itemKgPcs" name="pltTypeLists[0].itemKgPcs">3149</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[0].ordThk" name="pltTypeLists[0].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].ordWth" name="pltTypeLists[0].ordWth">1920</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[0].ordLth" name="pltTypeLists[0].ordLth">6400</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[0].liftNo" name="pltTypeLists[0].liftNo">H0420</label>
+							<label id="pltTypeLists[0].rollWeek" name="pltTypeLists[0].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].pcsCount" name="pltTypeLists[0].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].okNum" name="pltTypeLists[0].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].itemKgPcs" name="pltTypeLists[0].itemKgPcs">3149</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].loadNo" name="pltTypeLists[0].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[0].liftDate" name="pltTypeLists[0].liftDate">0915</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].liftDateE" name="pltTypeLists[0].liftDateE">20230915</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].lifoutDate" name="pltTypeLists[0].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].lifoutDateE" name="pltTypeLists[0].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].shipReqE" name="pltTypeLists[0].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].shipToCode" name="pltTypeLists[0].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].custAbbName" name="pltTypeLists[0].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].custNmC" name="pltTypeLists[0].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].spec" name="pltTypeLists[0].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[0].PLT_L_STUS_IACF" name="pltTypeLists[0].PLT_L_STUS_IACF">34309CK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].loc" name="pltTypeLists[0].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[0].plateType" name="pltTypeLists[0].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[1].opt" name="pltTypeLists[1].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].loc2" name="pltTypeLists[1].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].LVL1" name="pltTypeLists[1].LVL1">08</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[1].ordItem" name="pltTypeLists[1].ordItem">TP7207F001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].loadNo" name="pltTypeLists[1].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].shipToCode" name="pltTypeLists[1].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[1].liftNo" name="pltTypeLists[1].liftNo">C0739</label>
+							<label id="pltTypeLists[1].rollWeek" name="pltTypeLists[1].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].itemKgPcs" name="pltTypeLists[1].itemKgPcs">3654</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[1].ordThk" name="pltTypeLists[1].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].ordWth" name="pltTypeLists[1].ordWth">2438</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[1].ordLth" name="pltTypeLists[1].ordLth">5850</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[1].liftNo" name="pltTypeLists[1].liftNo">C0739</label>
+							<label id="pltTypeLists[1].rollWeek" name="pltTypeLists[1].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].pcsCount" name="pltTypeLists[1].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].okNum" name="pltTypeLists[1].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].itemKgPcs" name="pltTypeLists[1].itemKgPcs">3654</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].loadNo" name="pltTypeLists[1].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[1].liftDate" name="pltTypeLists[1].liftDate">0913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].liftDateE" name="pltTypeLists[1].liftDateE">20230913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].lifoutDate" name="pltTypeLists[1].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].lifoutDateE" name="pltTypeLists[1].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].shipReqE" name="pltTypeLists[1].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].shipToCode" name="pltTypeLists[1].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].custAbbName" name="pltTypeLists[1].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].custNmC" name="pltTypeLists[1].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].spec" name="pltTypeLists[1].spec">SM570M-B TMC        </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[1].PLT_L_STUS_IACF" name="pltTypeLists[1].PLT_L_STUS_IACF">34307BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].loc" name="pltTypeLists[1].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[1].plateType" name="pltTypeLists[1].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[2].opt" name="pltTypeLists[2].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].loc2" name="pltTypeLists[2].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].LVL1" name="pltTypeLists[2].LVL1">07</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[2].ordItem" name="pltTypeLists[2].ordItem">JP1304P001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].loadNo" name="pltTypeLists[2].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].shipToCode" name="pltTypeLists[2].shipToCode">270 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[2].liftNo" name="pltTypeLists[2].liftNo">W5107</label>
+							<label id="pltTypeLists[2].rollWeek" name="pltTypeLists[2].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].itemKgPcs" name="pltTypeLists[2].itemKgPcs">4469</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[2].ordThk" name="pltTypeLists[2].ordThk">60</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].ordWth" name="pltTypeLists[2].ordWth">1525</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[2].ordLth" name="pltTypeLists[2].ordLth">6100</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[2].liftNo" name="pltTypeLists[2].liftNo">W5107</label>
+							<label id="pltTypeLists[2].rollWeek" name="pltTypeLists[2].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].pcsCount" name="pltTypeLists[2].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].okNum" name="pltTypeLists[2].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].itemKgPcs" name="pltTypeLists[2].itemKgPcs">4469</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].loadNo" name="pltTypeLists[2].loadNo"></label>
+						</td>
+						<td class="text-center bg-red " style="background-color:bg-red;color:;">
+							<label id="pltTypeLists[2].liftDate" name="pltTypeLists[2].liftDate">0304</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].liftDateE" name="pltTypeLists[2].liftDateE">20220304</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].lifoutDate" name="pltTypeLists[2].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].lifoutDateE" name="pltTypeLists[2].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].shipReqE" name="pltTypeLists[2].shipReqE">0305</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].shipToCode" name="pltTypeLists[2].shipToCode">270 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].custAbbName" name="pltTypeLists[2].custAbbName">利商       </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].custNmC" name="pltTypeLists[2].custNmC">利商       </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].spec" name="pltTypeLists[2].spec">SM570               </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[2].PLT_L_STUS_IACF" name="pltTypeLists[2].PLT_L_STUS_IACF">39200BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].loc" name="pltTypeLists[2].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[2].plateType" name="pltTypeLists[2].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[3].opt" name="pltTypeLists[3].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].loc2" name="pltTypeLists[3].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].LVL1" name="pltTypeLists[3].LVL1">07</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[3].ordItem" name="pltTypeLists[3].ordItem">JP3198T009</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].loadNo" name="pltTypeLists[3].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].shipToCode" name="pltTypeLists[3].shipToCode">325 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[3].liftNo" name="pltTypeLists[3].liftNo">H9502</label>
+							<label id="pltTypeLists[3].rollWeek" name="pltTypeLists[3].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].itemKgPcs" name="pltTypeLists[3].itemKgPcs">3540</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[3].ordThk" name="pltTypeLists[3].ordThk">35</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].ordWth" name="pltTypeLists[3].ordWth">1625</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[3].ordLth" name="pltTypeLists[3].ordLth">7770</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[3].liftNo" name="pltTypeLists[3].liftNo">H9502</label>
+							<label id="pltTypeLists[3].rollWeek" name="pltTypeLists[3].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].pcsCount" name="pltTypeLists[3].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].okNum" name="pltTypeLists[3].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].itemKgPcs" name="pltTypeLists[3].itemKgPcs">3540</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].loadNo" name="pltTypeLists[3].loadNo"></label>
+						</td>
+						<td class="text-center  text-red" style="background-color:;color:text-red;">
+							<label id="pltTypeLists[3].liftDate" name="pltTypeLists[3].liftDate">0905</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].liftDateE" name="pltTypeLists[3].liftDateE">20230905</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].lifoutDate" name="pltTypeLists[3].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].lifoutDateE" name="pltTypeLists[3].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].shipReqE" name="pltTypeLists[3].shipReqE">0920</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].shipToCode" name="pltTypeLists[3].shipToCode">325 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].custAbbName" name="pltTypeLists[3].custAbbName">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].custNmC" name="pltTypeLists[3].custNmC">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].spec" name="pltTypeLists[3].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[3].PLT_L_STUS_IACF" name="pltTypeLists[3].PLT_L_STUS_IACF">28949BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].loc" name="pltTypeLists[3].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[3].plateType" name="pltTypeLists[3].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[4].opt" name="pltTypeLists[4].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].loc2" name="pltTypeLists[4].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].LVL1" name="pltTypeLists[4].LVL1">06</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[4].ordItem" name="pltTypeLists[4].ordItem">JP1395N009</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].loadNo" name="pltTypeLists[4].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].shipToCode" name="pltTypeLists[4].shipToCode">737 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[4].liftNo" name="pltTypeLists[4].liftNo">M0192</label>
+							<label id="pltTypeLists[4].rollWeek" name="pltTypeLists[4].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].itemKgPcs" name="pltTypeLists[4].itemKgPcs">2921</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[4].ordThk" name="pltTypeLists[4].ordThk">38</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].ordWth" name="pltTypeLists[4].ordWth">1600</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[4].ordLth" name="pltTypeLists[4].ordLth">6000</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[4].liftNo" name="pltTypeLists[4].liftNo">M0192</label>
+							<label id="pltTypeLists[4].rollWeek" name="pltTypeLists[4].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].pcsCount" name="pltTypeLists[4].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].okNum" name="pltTypeLists[4].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].itemKgPcs" name="pltTypeLists[4].itemKgPcs">2921</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].loadNo" name="pltTypeLists[4].loadNo"></label>
+						</td>
+						<td class="text-center bg-red " style="background-color:bg-red;color:;">
+							<label id="pltTypeLists[4].liftDate" name="pltTypeLists[4].liftDate">0318</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].liftDateE" name="pltTypeLists[4].liftDateE">20220318</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].lifoutDate" name="pltTypeLists[4].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].lifoutDateE" name="pltTypeLists[4].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].shipReqE" name="pltTypeLists[4].shipReqE">0331</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].shipToCode" name="pltTypeLists[4].shipToCode">737 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].custAbbName" name="pltTypeLists[4].custAbbName">長榮鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].custNmC" name="pltTypeLists[4].custNmC">長榮鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].spec" name="pltTypeLists[4].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[4].PLT_L_STUS_IACF" name="pltTypeLists[4].PLT_L_STUS_IACF">39597BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].loc" name="pltTypeLists[4].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[4].plateType" name="pltTypeLists[4].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[5].opt" name="pltTypeLists[5].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].loc2" name="pltTypeLists[5].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].LVL1" name="pltTypeLists[5].LVL1">06</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[5].ordItem" name="pltTypeLists[5].ordItem">TP7176J001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].loadNo" name="pltTypeLists[5].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].shipToCode" name="pltTypeLists[5].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[5].liftNo" name="pltTypeLists[5].liftNo">E8459</label>
+							<label id="pltTypeLists[5].rollWeek" name="pltTypeLists[5].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].itemKgPcs" name="pltTypeLists[5].itemKgPcs">4670</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[5].ordThk" name="pltTypeLists[5].ordThk">30</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].ordWth" name="pltTypeLists[5].ordWth">2160</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[5].ordLth" name="pltTypeLists[5].ordLth">9000</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[5].liftNo" name="pltTypeLists[5].liftNo">E8459</label>
+							<label id="pltTypeLists[5].rollWeek" name="pltTypeLists[5].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].pcsCount" name="pltTypeLists[5].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].okNum" name="pltTypeLists[5].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].itemKgPcs" name="pltTypeLists[5].itemKgPcs">4670</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].loadNo" name="pltTypeLists[5].loadNo"></label>
+						</td>
+						<td class="text-center bg-red " style="background-color:bg-red;color:;">
+							<label id="pltTypeLists[5].liftDate" name="pltTypeLists[5].liftDate">0315</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].liftDateE" name="pltTypeLists[5].liftDateE">20220315</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].lifoutDate" name="pltTypeLists[5].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].lifoutDateE" name="pltTypeLists[5].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].shipReqE" name="pltTypeLists[5].shipReqE">0320</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].shipToCode" name="pltTypeLists[5].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].custAbbName" name="pltTypeLists[5].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].custNmC" name="pltTypeLists[5].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].spec" name="pltTypeLists[5].spec">SM570M-C TMC        </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[5].PLT_L_STUS_IACF" name="pltTypeLists[5].PLT_L_STUS_IACF">40513BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].loc" name="pltTypeLists[5].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[5].plateType" name="pltTypeLists[5].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[6].opt" name="pltTypeLists[6].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].loc2" name="pltTypeLists[6].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].LVL1" name="pltTypeLists[6].LVL1">05</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[6].ordItem" name="pltTypeLists[6].ordItem">JP1414E013</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].loadNo" name="pltTypeLists[6].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].shipToCode" name="pltTypeLists[6].shipToCode">634 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[6].liftNo" name="pltTypeLists[6].liftNo">M1757</label>
+							<label id="pltTypeLists[6].rollWeek" name="pltTypeLists[6].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].itemKgPcs" name="pltTypeLists[6].itemKgPcs">3894</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[6].ordThk" name="pltTypeLists[6].ordThk">38</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].ordWth" name="pltTypeLists[6].ordWth">1600</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[6].ordLth" name="pltTypeLists[6].ordLth">8000</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[6].liftNo" name="pltTypeLists[6].liftNo">M1757</label>
+							<label id="pltTypeLists[6].rollWeek" name="pltTypeLists[6].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].pcsCount" name="pltTypeLists[6].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].okNum" name="pltTypeLists[6].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].itemKgPcs" name="pltTypeLists[6].itemKgPcs">3894</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].loadNo" name="pltTypeLists[6].loadNo"></label>
+						</td>
+						<td class="text-center bg-red " style="background-color:bg-red;color:;">
+							<label id="pltTypeLists[6].liftDate" name="pltTypeLists[6].liftDate">0322</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].liftDateE" name="pltTypeLists[6].liftDateE">20220322</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].lifoutDate" name="pltTypeLists[6].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].lifoutDateE" name="pltTypeLists[6].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].shipReqE" name="pltTypeLists[6].shipReqE">0325</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].shipToCode" name="pltTypeLists[6].shipToCode">634 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].custAbbName" name="pltTypeLists[6].custAbbName">東鋼鋼結構    </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].custNmC" name="pltTypeLists[6].custNmC">東鋼鋼結構    </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].spec" name="pltTypeLists[6].spec">SM570M-B TMC        </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[6].PLT_L_STUS_IACF" name="pltTypeLists[6].PLT_L_STUS_IACF">44141AK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].loc" name="pltTypeLists[6].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[6].plateType" name="pltTypeLists[6].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[7].opt" name="pltTypeLists[7].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].loc2" name="pltTypeLists[7].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].LVL1" name="pltTypeLists[7].LVL1">05</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[7].ordItem" name="pltTypeLists[7].ordItem">TP7178M001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].loadNo" name="pltTypeLists[7].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].shipToCode" name="pltTypeLists[7].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[7].liftNo" name="pltTypeLists[7].liftNo">H6000</label>
+							<label id="pltTypeLists[7].rollWeek" name="pltTypeLists[7].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].itemKgPcs" name="pltTypeLists[7].itemKgPcs">3894</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[7].ordThk" name="pltTypeLists[7].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].ordWth" name="pltTypeLists[7].ordWth">1990</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[7].ordLth" name="pltTypeLists[7].ordLth">7640</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[7].liftNo" name="pltTypeLists[7].liftNo">H6000</label>
+							<label id="pltTypeLists[7].rollWeek" name="pltTypeLists[7].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].pcsCount" name="pltTypeLists[7].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].okNum" name="pltTypeLists[7].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].itemKgPcs" name="pltTypeLists[7].itemKgPcs">3894</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].loadNo" name="pltTypeLists[7].loadNo"></label>
+						</td>
+						<td class="text-center bg-red " style="background-color:bg-red;color:;">
+							<label id="pltTypeLists[7].liftDate" name="pltTypeLists[7].liftDate">0329</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].liftDateE" name="pltTypeLists[7].liftDateE">20220329</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].lifoutDate" name="pltTypeLists[7].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].lifoutDateE" name="pltTypeLists[7].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].shipReqE" name="pltTypeLists[7].shipReqE">0331</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].shipToCode" name="pltTypeLists[7].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].custAbbName" name="pltTypeLists[7].custAbbName">E.  H.-320     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].custNmC" name="pltTypeLists[7].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].spec" name="pltTypeLists[7].spec">SM570M-B TMC        </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[7].PLT_L_STUS_IACF" name="pltTypeLists[7].PLT_L_STUS_IACF">44857CK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].loc" name="pltTypeLists[7].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[7].plateType" name="pltTypeLists[7].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[8].opt" name="pltTypeLists[8].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].loc2" name="pltTypeLists[8].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].LVL1" name="pltTypeLists[8].LVL1">04</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[8].ordItem" name="pltTypeLists[8].ordItem">JP3195N007</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].loadNo" name="pltTypeLists[8].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].shipToCode" name="pltTypeLists[8].shipToCode">325 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[8].liftNo" name="pltTypeLists[8].liftNo">H0313</label>
+							<label id="pltTypeLists[8].rollWeek" name="pltTypeLists[8].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].itemKgPcs" name="pltTypeLists[8].itemKgPcs">3897</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[8].ordThk" name="pltTypeLists[8].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].ordWth" name="pltTypeLists[8].ordWth">2020</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[8].ordLth" name="pltTypeLists[8].ordLth">7530</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[8].liftNo" name="pltTypeLists[8].liftNo">H0313</label>
+							<label id="pltTypeLists[8].rollWeek" name="pltTypeLists[8].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].pcsCount" name="pltTypeLists[8].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].okNum" name="pltTypeLists[8].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].itemKgPcs" name="pltTypeLists[8].itemKgPcs">3897</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].loadNo" name="pltTypeLists[8].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[8].liftDate" name="pltTypeLists[8].liftDate">0914</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].liftDateE" name="pltTypeLists[8].liftDateE">20230914</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].lifoutDate" name="pltTypeLists[8].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].lifoutDateE" name="pltTypeLists[8].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].shipReqE" name="pltTypeLists[8].shipReqE">0831</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].shipToCode" name="pltTypeLists[8].shipToCode">325 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].custAbbName" name="pltTypeLists[8].custAbbName">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].custNmC" name="pltTypeLists[8].custNmC">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].spec" name="pltTypeLists[8].spec">SM570M-B TMC        </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[8].PLT_L_STUS_IACF" name="pltTypeLists[8].PLT_L_STUS_IACF">24434BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].loc" name="pltTypeLists[8].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[8].plateType" name="pltTypeLists[8].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[9].opt" name="pltTypeLists[9].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].loc2" name="pltTypeLists[9].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].LVL1" name="pltTypeLists[9].LVL1">04</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[9].ordItem" name="pltTypeLists[9].ordItem">JP3198T032</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].loadNo" name="pltTypeLists[9].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].shipToCode" name="pltTypeLists[9].shipToCode">325 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[9].liftNo" name="pltTypeLists[9].liftNo">P9060</label>
+							<label id="pltTypeLists[9].rollWeek" name="pltTypeLists[9].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].itemKgPcs" name="pltTypeLists[9].itemKgPcs">5272</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[9].ordThk" name="pltTypeLists[9].ordThk">50</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].ordWth" name="pltTypeLists[9].ordWth">1695</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[9].ordLth" name="pltTypeLists[9].ordLth">7770</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[9].liftNo" name="pltTypeLists[9].liftNo">P9060</label>
+							<label id="pltTypeLists[9].rollWeek" name="pltTypeLists[9].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].pcsCount" name="pltTypeLists[9].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].okNum" name="pltTypeLists[9].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].itemKgPcs" name="pltTypeLists[9].itemKgPcs">5272</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].loadNo" name="pltTypeLists[9].loadNo"></label>
+						</td>
+						<td class="text-center  text-red" style="background-color:;color:text-red;">
+							<label id="pltTypeLists[9].liftDate" name="pltTypeLists[9].liftDate">0908</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].liftDateE" name="pltTypeLists[9].liftDateE">20230908</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].lifoutDate" name="pltTypeLists[9].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].lifoutDateE" name="pltTypeLists[9].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].shipReqE" name="pltTypeLists[9].shipReqE">0920</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].shipToCode" name="pltTypeLists[9].shipToCode">325 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].custAbbName" name="pltTypeLists[9].custAbbName">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].custNmC" name="pltTypeLists[9].custNmC">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].spec" name="pltTypeLists[9].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[9].PLT_L_STUS_IACF" name="pltTypeLists[9].PLT_L_STUS_IACF">32371BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].loc" name="pltTypeLists[9].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[9].plateType" name="pltTypeLists[9].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[10].opt" name="pltTypeLists[10].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].loc2" name="pltTypeLists[10].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].LVL1" name="pltTypeLists[10].LVL1">03</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[10].ordItem" name="pltTypeLists[10].ordItem">JP3185H003</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].loadNo" name="pltTypeLists[10].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].shipToCode" name="pltTypeLists[10].shipToCode">720 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[10].liftNo" name="pltTypeLists[10].liftNo">H9820</label>
+							<label id="pltTypeLists[10].rollWeek" name="pltTypeLists[10].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].itemKgPcs" name="pltTypeLists[10].itemKgPcs">4045</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[10].ordThk" name="pltTypeLists[10].ordThk">34</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].ordWth" name="pltTypeLists[10].ordWth">2438</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[10].ordLth" name="pltTypeLists[10].ordLth">6096</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[10].liftNo" name="pltTypeLists[10].liftNo">H9820</label>
+							<label id="pltTypeLists[10].rollWeek" name="pltTypeLists[10].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].pcsCount" name="pltTypeLists[10].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].okNum" name="pltTypeLists[10].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].itemKgPcs" name="pltTypeLists[10].itemKgPcs">4045</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].loadNo" name="pltTypeLists[10].loadNo"></label>
+						</td>
+						<td class="text-center  text-red" style="background-color:;color:text-red;">
+							<label id="pltTypeLists[10].liftDate" name="pltTypeLists[10].liftDate">0908</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].liftDateE" name="pltTypeLists[10].liftDateE">20230908</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].lifoutDate" name="pltTypeLists[10].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].lifoutDateE" name="pltTypeLists[10].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].shipReqE" name="pltTypeLists[10].shipReqE">0915</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].shipToCode" name="pltTypeLists[10].shipToCode">720 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].custAbbName" name="pltTypeLists[10].custAbbName">中鋼結構     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].custNmC" name="pltTypeLists[10].custNmC">中鋼結構     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].spec" name="pltTypeLists[10].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[10].PLT_L_STUS_IACF" name="pltTypeLists[10].PLT_L_STUS_IACF">30355AK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].loc" name="pltTypeLists[10].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[10].plateType" name="pltTypeLists[10].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[11].opt" name="pltTypeLists[11].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].loc2" name="pltTypeLists[11].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].LVL1" name="pltTypeLists[11].LVL1">03</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[11].ordItem" name="pltTypeLists[11].ordItem">TP7206Q001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].loadNo" name="pltTypeLists[11].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].shipToCode" name="pltTypeLists[11].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[11].liftNo" name="pltTypeLists[11].liftNo">H0232</label>
+							<label id="pltTypeLists[11].rollWeek" name="pltTypeLists[11].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].itemKgPcs" name="pltTypeLists[11].itemKgPcs">3001</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[11].ordThk" name="pltTypeLists[11].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].ordWth" name="pltTypeLists[11].ordWth">1920</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[11].ordLth" name="pltTypeLists[11].ordLth">6100</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[11].liftNo" name="pltTypeLists[11].liftNo">H0232</label>
+							<label id="pltTypeLists[11].rollWeek" name="pltTypeLists[11].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].pcsCount" name="pltTypeLists[11].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].okNum" name="pltTypeLists[11].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].itemKgPcs" name="pltTypeLists[11].itemKgPcs">3001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].loadNo" name="pltTypeLists[11].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[11].liftDate" name="pltTypeLists[11].liftDate">0913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].liftDateE" name="pltTypeLists[11].liftDateE">20230913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].lifoutDate" name="pltTypeLists[11].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].lifoutDateE" name="pltTypeLists[11].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].shipReqE" name="pltTypeLists[11].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].shipToCode" name="pltTypeLists[11].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].custAbbName" name="pltTypeLists[11].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].custNmC" name="pltTypeLists[11].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].spec" name="pltTypeLists[11].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[11].PLT_L_STUS_IACF" name="pltTypeLists[11].PLT_L_STUS_IACF">31524BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].loc" name="pltTypeLists[11].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[11].plateType" name="pltTypeLists[11].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[12].opt" name="pltTypeLists[12].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].loc2" name="pltTypeLists[12].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].LVL1" name="pltTypeLists[12].LVL1">02</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[12].ordItem" name="pltTypeLists[12].ordItem">JP3196P003</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].loadNo" name="pltTypeLists[12].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].shipToCode" name="pltTypeLists[12].shipToCode">325 </label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[12].liftNo" name="pltTypeLists[12].liftNo">E6491</label>
+							<label id="pltTypeLists[12].rollWeek" name="pltTypeLists[12].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].itemKgPcs" name="pltTypeLists[12].itemKgPcs">3909</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[12].ordThk" name="pltTypeLists[12].ordThk">36</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].ordWth" name="pltTypeLists[12].ordWth">1915</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[12].ordLth" name="pltTypeLists[12].ordLth">7080</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[12].liftNo" name="pltTypeLists[12].liftNo">E6491</label>
+							<label id="pltTypeLists[12].rollWeek" name="pltTypeLists[12].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].pcsCount" name="pltTypeLists[12].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].okNum" name="pltTypeLists[12].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].itemKgPcs" name="pltTypeLists[12].itemKgPcs">3909</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].loadNo" name="pltTypeLists[12].loadNo"></label>
+						</td>
+						<td class="text-center  text-red" style="background-color:;color:text-red;">
+							<label id="pltTypeLists[12].liftDate" name="pltTypeLists[12].liftDate">0831</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].liftDateE" name="pltTypeLists[12].liftDateE">20230831</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].lifoutDate" name="pltTypeLists[12].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].lifoutDateE" name="pltTypeLists[12].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].shipReqE" name="pltTypeLists[12].shipReqE">0910</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].shipToCode" name="pltTypeLists[12].shipToCode">325 </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].custAbbName" name="pltTypeLists[12].custAbbName">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].custNmC" name="pltTypeLists[12].custNmC">春源鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].spec" name="pltTypeLists[12].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[12].PLT_L_STUS_IACF" name="pltTypeLists[12].PLT_L_STUS_IACF">30339AK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].loc" name="pltTypeLists[12].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[12].plateType" name="pltTypeLists[12].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[13].opt" name="pltTypeLists[13].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].loc2" name="pltTypeLists[13].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].LVL1" name="pltTypeLists[13].LVL1">02</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[13].ordItem" name="pltTypeLists[13].ordItem">TP7206Q001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].loadNo" name="pltTypeLists[13].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].shipToCode" name="pltTypeLists[13].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[13].liftNo" name="pltTypeLists[13].liftNo">H0231</label>
+							<label id="pltTypeLists[13].rollWeek" name="pltTypeLists[13].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].itemKgPcs" name="pltTypeLists[13].itemKgPcs">3001</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[13].ordThk" name="pltTypeLists[13].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].ordWth" name="pltTypeLists[13].ordWth">1920</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[13].ordLth" name="pltTypeLists[13].ordLth">6100</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[13].liftNo" name="pltTypeLists[13].liftNo">H0231</label>
+							<label id="pltTypeLists[13].rollWeek" name="pltTypeLists[13].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].pcsCount" name="pltTypeLists[13].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].okNum" name="pltTypeLists[13].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].itemKgPcs" name="pltTypeLists[13].itemKgPcs">3001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].loadNo" name="pltTypeLists[13].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[13].liftDate" name="pltTypeLists[13].liftDate">0913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].liftDateE" name="pltTypeLists[13].liftDateE">20230913</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].lifoutDate" name="pltTypeLists[13].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].lifoutDateE" name="pltTypeLists[13].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].shipReqE" name="pltTypeLists[13].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].shipToCode" name="pltTypeLists[13].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].custAbbName" name="pltTypeLists[13].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].custNmC" name="pltTypeLists[13].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].spec" name="pltTypeLists[13].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[13].PLT_L_STUS_IACF" name="pltTypeLists[13].PLT_L_STUS_IACF">31524CK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].loc" name="pltTypeLists[13].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[13].plateType" name="pltTypeLists[13].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[14].opt" name="pltTypeLists[14].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].loc2" name="pltTypeLists[14].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].LVL1" name="pltTypeLists[14].LVL1">01</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[14].ordItem" name="pltTypeLists[14].ordItem">TP7207B001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].loadNo" name="pltTypeLists[14].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].shipToCode" name="pltTypeLists[14].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[14].liftNo" name="pltTypeLists[14].liftNo">C0132</label>
+							<label id="pltTypeLists[14].rollWeek" name="pltTypeLists[14].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].itemKgPcs" name="pltTypeLists[14].itemKgPcs">3887</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[14].ordThk" name="pltTypeLists[14].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].ordWth" name="pltTypeLists[14].ordWth">1920</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[14].ordLth" name="pltTypeLists[14].ordLth">7900</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[14].liftNo" name="pltTypeLists[14].liftNo">C0132</label>
+							<label id="pltTypeLists[14].rollWeek" name="pltTypeLists[14].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].pcsCount" name="pltTypeLists[14].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].okNum" name="pltTypeLists[14].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].itemKgPcs" name="pltTypeLists[14].itemKgPcs">3887</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].loadNo" name="pltTypeLists[14].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[14].liftDate" name="pltTypeLists[14].liftDate">0911</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].liftDateE" name="pltTypeLists[14].liftDateE">20230911</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].lifoutDate" name="pltTypeLists[14].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].lifoutDateE" name="pltTypeLists[14].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].shipReqE" name="pltTypeLists[14].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].shipToCode" name="pltTypeLists[14].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].custAbbName" name="pltTypeLists[14].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].custNmC" name="pltTypeLists[14].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].spec" name="pltTypeLists[14].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[14].PLT_L_STUS_IACF" name="pltTypeLists[14].PLT_L_STUS_IACF">33071BK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].loc" name="pltTypeLists[14].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[14].plateType" name="pltTypeLists[14].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[15].opt" name="pltTypeLists[15].opt">J  </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].loc2" name="pltTypeLists[15].loc2">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].LVL1" name="pltTypeLists[15].LVL1">01</label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[15].ordItem" name="pltTypeLists[15].ordItem">TP7207B001</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].loadNo" name="pltTypeLists[15].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].shipToCode" name="pltTypeLists[15].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[15].liftNo" name="pltTypeLists[15].liftNo">C0133</label>
+							<label id="pltTypeLists[15].rollWeek" name="pltTypeLists[15].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].itemKgPcs" name="pltTypeLists[15].itemKgPcs">3887</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[15].ordThk" name="pltTypeLists[15].ordThk">32</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].ordWth" name="pltTypeLists[15].ordWth">1920</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[15].ordLth" name="pltTypeLists[15].ordLth">7900</label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[15].liftNo" name="pltTypeLists[15].liftNo">C0133</label>
+							<label id="pltTypeLists[15].rollWeek" name="pltTypeLists[15].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].pcsCount" name="pltTypeLists[15].pcsCount">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].okNum" name="pltTypeLists[15].okNum">1</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].itemKgPcs" name="pltTypeLists[15].itemKgPcs">3887</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].loadNo" name="pltTypeLists[15].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[15].liftDate" name="pltTypeLists[15].liftDate">0911</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].liftDateE" name="pltTypeLists[15].liftDateE">20230911</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].lifoutDate" name="pltTypeLists[15].lifoutDate">1006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].lifoutDateE" name="pltTypeLists[15].lifoutDateE">20231006</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].shipReqE" name="pltTypeLists[15].shipReqE">0810</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].shipToCode" name="pltTypeLists[15].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].custAbbName" name="pltTypeLists[15].custAbbName">CHUN YUAN      </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].custNmC" name="pltTypeLists[15].custNmC">中國鋼鐵     </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].spec" name="pltTypeLists[15].spec">SM570M-C HW         </label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[15].PLT_L_STUS_IACF" name="pltTypeLists[15].PLT_L_STUS_IACF">33071CK                                                                             </label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].loc" name="pltTypeLists[15].loc">9007F</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[15].plateType" name="pltTypeLists[15].plateType">J  </label>
+						</td>
+					</tr>
+				
+					<tr>
+						<td class="text-center">
+							<label id="pltTypeLists[16].opt" name="pltTypeLists[16].opt"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].loc2" name="pltTypeLists[16].loc2"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].LVL1" name="pltTypeLists[16].LVL1"></label>
+						</td>
+						<td class="text-center ">
+							<label id="pltTypeLists[16].ordItem" name="pltTypeLists[16].ordItem">儲位重：</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].loadNo" name="pltTypeLists[16].loadNo"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].shipToCode" name="pltTypeLists[16].shipToCode"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[16].liftNo" name="pltTypeLists[16].liftNo"></label>
+							<label id="pltTypeLists[16].rollWeek" name="pltTypeLists[16].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].itemKgPcs" name="pltTypeLists[16].itemKgPcs">61090</label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[16].ordThk" name="pltTypeLists[16].ordThk"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].ordWth" name="pltTypeLists[16].ordWth"></label>
+						</td>
+						<td class="text-center  ">
+							<label id="pltTypeLists[16].ordLth" name="pltTypeLists[16].ordLth"></label>
+						</td>
+						<td class="text-center  " style="background-color:;">
+							<label id="pltTypeLists[16].liftNo" name="pltTypeLists[16].liftNo"></label>
+							<label id="pltTypeLists[16].rollWeek" name="pltTypeLists[16].rollWeek"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].pcsCount" name="pltTypeLists[16].pcsCount"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].okNum" name="pltTypeLists[16].okNum"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].itemKgPcs" name="pltTypeLists[16].itemKgPcs">61090</label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].loadNo" name="pltTypeLists[16].loadNo"></label>
+						</td>
+						<td class="text-center  " style="background-color:;color:;">
+							<label id="pltTypeLists[16].liftDate" name="pltTypeLists[16].liftDate"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].liftDateE" name="pltTypeLists[16].liftDateE"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].lifoutDate" name="pltTypeLists[16].lifoutDate"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].lifoutDateE" name="pltTypeLists[16].lifoutDateE"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].shipReqE" name="pltTypeLists[16].shipReqE"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].shipToCode" name="pltTypeLists[16].shipToCode"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].custAbbName" name="pltTypeLists[16].custAbbName"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].custNmC" name="pltTypeLists[16].custNmC"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].spec" name="pltTypeLists[16].spec"></label>
+						</td>
+						<td class="text-left">
+							<label id="pltTypeLists[16].PLT_L_STUS_IACF" name="pltTypeLists[16].PLT_L_STUS_IACF"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].loc" name="pltTypeLists[16].loc"></label>
+						</td>
+						<td class="text-center">
+							<label id="pltTypeLists[16].plateType" name="pltTypeLists[16].plateType"></label>
+						</td>
+					</tr>
+				
+			</tbody>
+		</table>
+	</div>
+<!-- table -->
+	<div> &nbsp;</div>
+	<div class="input-group">
+		<span class="input-group-btn">
+			<button class="btn btn-info" type="submit" name="_action" value="readPrev">
+				<i class="fa fa-search"></i> 上一儲位
+			</button>
+		</span> 
+		<span class="input-group-btn">
+			<button class="btn btn-info" type="submit" name="_action" value="readNext">
+				<i class="fa fa-search"></i> 下一儲位
+			</button>
+		</span>
+	</div>
+</form> 
+	
+
+
+  <div class="modal fade" id="locStock">
+  	<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">
+						<B>鋼板庫存</B>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<div id="stockMsg" class="alert alert-success"
+							style="font-size: 15px;">
+					</div>
+					<div>
+						<!-- 表格 -->
+						<table id="stockTable"
+							class="table table-condensed table-bordered table-striped table-hover"
+							data-toggle="case-table" data-pagination="true"
+							data-search="false" data-sortable="true"
+							data-show-columns="false" data-escape="false"
+							data-show-export="true" data-show-toggle="false"
+							data-page-size=500 data-query-params=""
+							data-filter-control="true" data-url="">
+							<thead style="background-color: #ddf4ff; margin-top: 5px">
+								<tr>
+									<th data-width="33%" class="text-center" data-field="LOC" data-formatter="locStockDataFormatter">庫別</th>
+									<th data-width="33%" class="text-center" data-field="WGT" data-formatter="locStockDataFormatter">重量(噸)</th>
+									<th data-width="33%" class="text-center" data-field="PCS" data-formatter="locStockDataFormatter">件數</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+				</div>
+			</div>
+  	</div>
+  </div>
+</div>
+	</div>
+	<div class="container-fluid container-csc-footer">
+		<div>
+			</div>
+	</div>
+	<!-- Load custom Javascript -->
+	</body>
+</html>

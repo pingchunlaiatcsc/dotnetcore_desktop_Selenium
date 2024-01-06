@@ -11,5 +11,7 @@ namespace dotnetcore_desktop_app.Data
         }
 
         public DbSet<RpgCharater> RpgCharaters => Set<RpgCharater>();
+
+        public DbSet<dotnetcore_desktop_app.Models.C341TaskSimulateViewModel> C341TaskSimulateViewModel { get; set; } = default!;
     }
 }

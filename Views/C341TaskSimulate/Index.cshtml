@@ -1,5 +1,58 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using prjC349WebMVC.Library.WebCrawler;
 @{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@{
+    List<IA77.Model> yy = (List<IA77.Model>)ViewData["dataforview"];
+    <table>
+        <tr>
+            <td>OP</td>
+            <td>儲區</td>
+            <td>訂單號碼</td>
+            <td>提單</td>
+            <td>交地</td>
+            <td>吊移單</td>
+            <td>重量</td>
+            <td>厚度</td>
+            <td>片數</td>
+            <td>OK(放行數量)</td>
+            <td>吊移(接收日)</td>
+            <td>吊移8(接收日8碼)</td>
+            <td>吊異(異動日)</td>
+            <td>吊異8(異動日8碼)</td>
+            <td>客戶名稱</td>
+            <td>訂單客戶</td>
+            <td>規格</td>
+            <td>鋼板軋序</td>
+            <td>分類</td>
+        </tr>
+        @foreach (IA77.Model item in yy)
+        {
+            <tr>
+                <td>@item.OP</td>
+                <td>@item.Loc</td>
+                <td>@item.OrdNumber</td>
+                <td>@item.BillOfLading</td>
+                <td>@item.ShipToCode</td>
+                <td>@item.LiftNumber</td>
+                <td>@item.Weight</td>
+                <td>@item.Thickness</td>
+                <td>@item.Width</td>
+                <td>@item.PcsCount</td>
+                <td>@item.Ok_ReleasedCode</td>
+                <td>@item.ReceivedDate</td>
+                <td>@item.ReceivedDate8</td>
+                <td>@item.MoveDate</td>
+                <td>@item.MoveDate8</td>
+                <td>@item.CustomerName</td>
+                <td>@item.OrderCustomerName</td>
+                <td>@item.Spec</td>
+                <td>@item.PltNumber</td>
+                <td>@item.PlateType</td>
+            </tr>
+        }
+    </table>
 }
