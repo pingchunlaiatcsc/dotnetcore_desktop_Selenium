@@ -9,7 +9,9 @@ namespace dotnetcore_desktop_app.Controllers
     {
         public IActionResult Index()
         {
-            EIP eip = new EIP("214585", "791005");
+            string userId = "";
+            string userPassword = "";
+            EIP eip = new EIP(userId, userPassword);
             if (eip.isLogin == false)
             {
                 return View();
